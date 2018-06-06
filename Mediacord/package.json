@@ -22,9 +22,14 @@
     "lib": "lib",
     "test": "test"
   },
+  "engines": {
+    "node": "4.1.1",
+    "npm": "2.1.x"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack -d -w"
+    "start": "webpack -d -w",
+    "postinstall": "webpack"
   },
   "keywords": [],
   "author": "",
