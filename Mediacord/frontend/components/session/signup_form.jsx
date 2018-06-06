@@ -11,6 +11,10 @@ class SignUpForm extends React.Component {
       username: "",
       password: "",
       sorry: "",
+      error: {
+        username: "",
+        password: ""
+      }
     };
 
     this.handleInput = this.handleInput.bind(this);
@@ -35,12 +39,37 @@ class SignUpForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.submitForm(this.state);
+    let error = false;
+    let passwordError = "";
+    let usernameError = "";
+    if(this.state.password.length < 6){
+      error = true;
+      passwordError = "Password must be at least 6 characters long!"
+    }
+    if(this.state.username.length === 0){
+      usernameError = "Username can't be empty!"
+    }
+    if (error){
+      this.setState({
+        error: {
+          username: usernameError,
+          password: passwordError
+        }
+      });
+    }
+    else
+      this.props.submitForm(this.state);
   }
 
   demoUser(e){
     e.preventDefault();
     this.props.demoForm({username: "Demo", password: "password"});
+  }
+
+  componentWillReceiveProps(nextProps){
+    if(this.props.location.pathname != nextProps.location.pathname){
+      this.props.resetErrors();
+    }
   }
 
   render() {
@@ -60,9 +89,12 @@ class SignUpForm extends React.Component {
             <div className="title">{this.props.welcome}</div>
             <div className="subTitle">{this.props.welcome2}</div>
             <div className="block">
+              <div className="error">{this.props.errors.general}</div>
               <h5 className="input-title">Username</h5>
+              <div className="error">{this.state.error.username}</div>
               <input className="input-default" type="text" onChange={this.handleInput('username')} value={this.state.username}></input>
               <h5 className="input-title">Password</h5>
+              <div className="error">{this.state.error.password}</div>
               <input className="input-default" type="password" onChange={this.handleInput('password')} value={this.state.password}></input>
               <button onClick={this.handleClick}>
                 <div className="forgot-password">

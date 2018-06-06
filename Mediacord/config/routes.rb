@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   end
 
   root to: 'static_pages#root'
+  get '*path' => redirect('/')
 end

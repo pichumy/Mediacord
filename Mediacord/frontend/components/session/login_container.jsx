@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { createNewSession } from '../../actions/session_actions';
+import { createNewSession, resetErrors } from '../../actions/session_actions';
 import SignUpForm from './signup_form';
 
 const mapStateToProps = state => ({
@@ -15,7 +15,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   submitForm: (userForm) => dispatch(createNewSession(userForm)),
-  demoForm: (userForm) => dispatch(createNewSession(userForm))
+  demoForm: (userForm) => dispatch(createNewSession(userForm)),
+  resetErrors: () => dispatch(resetErrors())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignUpForm);

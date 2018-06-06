@@ -3,7 +3,7 @@ export const RECEIVE_NEW_SESSION = 'RECEIVE_NEW_SESSION';
 export const RECEIVE_NEW_USER = 'RECEIVE_NEW_USER';
 export const LOGOUT_USER = 'LOGOUT_USER';
 export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
-
+export const RESET_ERRORS = 'RESET_ERRORS';
 export const START_LOADING = 'START_LOADING';
 
 const startLoading = () => ({
@@ -36,6 +36,12 @@ const receiveErrors = (errors) => {
       { type: RECEIVE_ERRORS, errors }
     )
 };
+
+export const resetErrors = () => {
+  return (
+    { type: RESET_ERRORS }
+  )
+}
 
 
 export const createNewSession = userForm => dispatch => {

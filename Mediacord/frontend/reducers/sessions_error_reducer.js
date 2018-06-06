@@ -1,6 +1,6 @@
-import { RECEIVE_ERRORS, RECEIVE_NEW_SESSION } from '../actions/session_actions';
+import { RECEIVE_ERRORS, RECEIVE_NEW_SESSION, RESET_ERRORS } from '../actions/session_actions';
 
-const initialState = [];
+const initialState = {};
 
 const sessionsErrorReducer = (state = initialState, action) => {
   Object.freeze(state);
@@ -8,7 +8,9 @@ const sessionsErrorReducer = (state = initialState, action) => {
     case RECEIVE_ERRORS:
       return action.errors;
     case RECEIVE_NEW_SESSION:
-      return [];
+      return {};
+    case RESET_ERRORS:
+      return {};
     default:
       return state;
   }

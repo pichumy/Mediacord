@@ -1,4 +1,4 @@
-import { START_LOADING, RECEIVE_NEW_USER, RECEIVE_NEW_SESSION, LOGOUT_USER } from '../actions/session_actions';
+import { START_LOADING, RECEIVE_NEW_USER, RECEIVE_NEW_SESSION, LOGOUT_USER, RECEIVE_ERRORS } from '../actions/session_actions';
 
 const initialState = {
   loading: false,
@@ -15,6 +15,8 @@ const loadingReducer = (state = initialState, action) => {
       return Object.assign({}, state, {loading: false});
     case START_LOADING:
       return Object.assign({}, state, {loading: true});
+    case RECEIVE_ERRORS:
+      return Object.assign({}, state, {loading: false});
     default:
       return state;
   }
