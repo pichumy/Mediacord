@@ -121,7 +121,6 @@ button {
 }
 
 .need-account {
-  margin: 0 auto;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -132,7 +131,7 @@ button {
 }
 
 .register {
-  margin: 0 auto;
+  margin: 0 0;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -140,4 +139,13 @@ button {
   line-height: 16px;
   font-size: 14px;
   padding-right: 5px;
+}
+
+.demo {
+  text-align: right;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
 }

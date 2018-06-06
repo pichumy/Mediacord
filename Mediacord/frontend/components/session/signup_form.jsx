@@ -15,6 +15,7 @@ class SignUpForm extends React.Component {
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.demoUser = this.demoUser.bind(this);
   }
 
   handleInput(type) {
@@ -33,7 +34,12 @@ class SignUpForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.submitForm(this.state).then(this.props.history.push('home'));
+    this.props.submitForm(this.state);
+  }
+
+  demoUser(e){
+    e.preventDefault();
+    this.props.demoForm({username: "Demo", password: "password"});
   }
 
   render() {
@@ -61,16 +67,19 @@ class SignUpForm extends React.Component {
               </button>
 
               <button className="submit-button" onClick={this.handleSubmit}><div className="button-content">{this.props.formType}</div></button>
-              <div>
-                <span className="need-account">{this.props.needAccount}</span>
-                <button className="register">
-                  <Link to="/signup">
-                    <div className="button-content link-color">{this.props.register}</div>
-                  </Link>
-                  <Link to="/">
-                    <div className="button-content link-color">{this.props.haveAccount}</div>
-                  </Link>
-                </button>
+              <div className="flex">
+                <span className="need-account">
+                  {this.props.needAccount} &nbsp;
+                  <button className="register">
+                    <Link to="/signup">
+                      <div className="button-content link-color">{this.props.register}</div>
+                    </Link>
+                    <Link to="/">
+                      <div className="button-content link-color">{this.props.haveAccount}</div>
+                    </Link>
+                  </button>
+                </span>
+                <button onClick={this.demoUser} className="register button-content link-color demo">Demo</button>
               </div>
           </div>
         </div>

@@ -13,7 +13,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  submitForm: (userForm) => dispatch(createNewSession(userForm))
+  submitForm: (userForm) => dispatch(createNewSession(userForm)),
+  demoForm: (userForm) => dispatch(createNewSession(userForm))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignUpForm);
