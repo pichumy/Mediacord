@@ -1,6 +1,7 @@
 import React from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import Logo from '../logo';
+import Loading from '../loading';
 
 class SignUpForm extends React.Component {
   constructor(props) {
@@ -43,6 +44,13 @@ class SignUpForm extends React.Component {
   }
 
   render() {
+    if(this.props.loading){
+      return (
+        <div>
+          <Loading />
+        </div>
+      )
+    }
     return (
     <div className="background">
       <Logo />

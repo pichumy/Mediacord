@@ -1,9 +1,10 @@
 import React from 'react';
+import Loading from '../loading';
 
 const Home = (props) => {
-  if(!props){
+  if(props.loading){
     return(
-      <div> Loading...</div>
+      <Loading />
     )
   }
   return(

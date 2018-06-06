@@ -3,7 +3,7 @@ import { logoutSession } from '../../actions/session_actions';
 import Home from './home';
 
 const mapStateToProps = (state, ownProps) => ({
-
+  loading: state.loading.loading
 })
 
 const mapDispatchToProps = dispatch => ({
