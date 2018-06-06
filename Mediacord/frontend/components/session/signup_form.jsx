@@ -43,7 +43,7 @@ class SignUpForm extends React.Component {
   }
 
   render() {
-
+    console.log("Form renders");
     return (
     <div className="background">
       <Logo />
