@@ -13,7 +13,8 @@ class SignUpForm extends React.Component {
       sorry: "",
       error: {
         username: "",
-        password: ""
+        password: "",
+        general: ""
       }
     };
 
@@ -21,6 +22,16 @@ class SignUpForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.demoUser = this.demoUser.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps){
+    if(this.props.errors.general != nextProps.errors.general){
+      this.setState({
+        error:{
+          general: nextProps.errors.general
+        }
+      })
+    }
   }
 
   handleInput(type) {
@@ -66,11 +77,6 @@ class SignUpForm extends React.Component {
     this.props.demoForm({username: "Demo", password: "password"});
   }
 
-  componentWillReceiveProps(nextProps){
-    if(this.props.location.pathname != nextProps.location.pathname){
-      this.props.resetErrors();
-    }
-  }
 
   render() {
     if(this.props.loading){
@@ -89,7 +95,7 @@ class SignUpForm extends React.Component {
             <div className="title">{this.props.welcome}</div>
             <div className="subTitle">{this.props.welcome2}</div>
             <div className="block">
-              <div className="error">{this.props.errors.general}</div>
+              <div className="error">{this.state.error.general}</div>
               <h5 className="input-title">Username</h5>
               <div className="error">{this.state.error.username}</div>
               <input className="input-default" type="text" onChange={this.handleInput('username')} value={this.state.username}></input>
