@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
-import { createNewSession, resetErrors } from '../../actions/session_actions';
+import { createNewSession } from '../../actions/session_actions';
+import { resetErrors } from '../../actions/error_actions';
 import SignUpForm from './signup_form';
 
 const mapStateToProps = state => ({

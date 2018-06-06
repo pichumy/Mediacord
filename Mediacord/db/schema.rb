@@ -10,14 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180606171713) do
+ActiveRecord::Schema.define(version: 20180606215239) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "server_memberships", force: :cascade do |t|
+    t.integer "server_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["server_id", "user_id"], name: "index_server_memberships_on_server_id_and_user_id", unique: true
+  end
+
   create_table "servers", force: :cascade do |t|
     t.string "name", null: false
-    t.string "avatar_url"
+    t.string "avatar_url", default: "discord-logo.png"
     t.boolean "private", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

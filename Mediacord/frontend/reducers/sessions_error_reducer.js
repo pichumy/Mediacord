@@ -1,5 +1,5 @@
-import { RECEIVE_ERRORS, RECEIVE_NEW_SESSION, RESET_ERRORS } from '../actions/session_actions';
-
+import { RECEIVE_NEW_SESSION, RESET_ERRORS } from '../actions/session_actions';
+import { RECEIVE_ERRORS } from '../actions/error_actions';
 const initialState = {};
 
 const sessionsErrorReducer = (state = initialState, action) => {

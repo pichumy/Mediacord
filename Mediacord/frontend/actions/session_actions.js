@@ -2,9 +2,8 @@ import * as APIUtils from '../utils/session_utils';
 export const RECEIVE_NEW_SESSION = 'RECEIVE_NEW_SESSION';
 export const RECEIVE_NEW_USER = 'RECEIVE_NEW_USER';
 export const LOGOUT_USER = 'LOGOUT_USER';
-export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
-export const RESET_ERRORS = 'RESET_ERRORS';
 export const START_LOADING = 'START_LOADING';
+import { RECEIVE_ERRORS, RESET_ERRORS, receiveErrors, resetErrors } from './error_actions'
 
 const startLoading = () => ({
   type: START_LOADING
@@ -30,18 +29,6 @@ const receiveNewUser = (user) => (
   }
 );
 
-
-const receiveErrors = (errors) => {
-    return (
-      { type: RECEIVE_ERRORS, errors }
-    )
-};
-
-export const resetErrors = () => {
-  return (
-    { type: RESET_ERRORS }
-  )
-}
 
 
 export const createNewSession = userForm => dispatch => {

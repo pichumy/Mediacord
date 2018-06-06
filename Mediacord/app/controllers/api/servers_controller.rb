@@ -1,5 +1,7 @@
 class Api::ServersController < ApplicationController
 
+  before_action :require_login
+
   def index
     @servers = Server.all
     render :index
@@ -19,9 +21,15 @@ class Api::ServersController < ApplicationController
   end
 
   def update
+    #TODO
   end
 
   def destroy
+    #TODO
+  end
+
+  def server_params
+    params.require(:server).permit(:avatar_url, :name, :private)
   end
 
 end

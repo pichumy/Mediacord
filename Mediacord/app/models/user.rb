@@ -7,7 +7,11 @@ class User < ApplicationRecord
   attr_reader :password
 
   # before_save :set_status
+  has_many :server_memberships
 
+  has_many :servers,
+  through: :server_memberships,
+  source: :server
 
   def ensure_session_token
     self.session_token ||= SecureRandom::urlsafe_base64(16)
