@@ -9,9 +9,6 @@ class User < ApplicationRecord
 
   # before_save :set_status
 
-  has_many :servers
-
-  belongs_to :server 
 
   def ensure_session_token
     self.session_token ||= SecureRandom::urlsafe_base64(16)
