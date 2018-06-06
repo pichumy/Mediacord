@@ -1,0 +1,8 @@
+.logo {
+  width: 130px;
+  height: 36px;
+  background-image: url(logo.svg);
+  position: absolute;
+  margin: auto;
+  z-index: 2;
+}
