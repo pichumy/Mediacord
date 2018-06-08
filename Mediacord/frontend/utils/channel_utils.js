@@ -9,7 +9,6 @@ export const postChannel = (channel) => {
 export const getChannels = (serverId) => {
   return $.ajax({
     method: "GET",
-    url: "api/channels",
-    data: {serverId}
+    url: `api/servers/${serverId}`,
   })
 }

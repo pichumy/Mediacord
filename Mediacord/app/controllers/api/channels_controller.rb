@@ -1,11 +1,5 @@
 class Api::ChannelsController < ApplicationController
 
-  def index
-    @server = Server.find(params[:serverId])
-    @channels = @server.channels
-    render :index 
-  end
-
   def create
     @channel = Channel.new(channel_params)
     if @channel.save

@@ -2,6 +2,7 @@ import * as APIUtil from '../utils/channel_utils';
 import { closeModal } from './modal_actions';
 export const RECEIVE_CHANNEL = "RECEIVE_CHANNEL";
 export const RECEIVE_CHANNELS = "RECEIVE_CHANNELS";
+export const START_LOADING = 'START_LOADING';
 
 const receiveChannel = (channel) => {
   dispatch(closeModal());
@@ -10,17 +11,25 @@ const receiveChannel = (channel) => {
   )
 }
 
-const receiveChannels(channels) => ({
-  type: RECEIVE_CHANNELS,
-  channels
-})
+// const startLoading = () => ({
+//   type: START_LOADING
+// })
+
+const receiveChannels = (channels) => {
+  // array of channels
+  return (
+    {type: RECEIVE_CHANNELS, channels}
+  )
+}
 
 export const createChannel = (channelForm) => dispatch =>  {
+  // dispatch(startLoading())
   return APIUtil.postChannel(channelForm)
     .then((channel) => dispatch(receiveChannel(channel)))
 };
 
 export const fetchChannels = (serverId) => dispatch => {
+  // dispatch(startLoading())
   return APIUtil.getChannels(serverId)
     .then((channels) => dispatch(receiveChannels(channels)))
 }

@@ -34,7 +34,11 @@
 
 .channels {
   height: 88%;
-  background-color: white;
+  color: gray;
+  display: flex;
+  flex: 1;
+  -webkit-box-flex: 1;
+  flex-direction: column;
 }
 
 .server-name {
@@ -51,4 +55,44 @@
 
 .V {
   font-family: sans-serif;
+}
+
+.channel-wrapper {
+  height: 34px;
+  overflow: hidden;
+  position: relative;
+  cursor: default;
+  outline: 0;
+  vertical-align: baseline;
+}
+
+.selected {
+  background-color: rgba(79,84,92,.6);
+}
+
+.selected-text {
+  color: #f6f6f7;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 32px;
+}
+
+.channel-text {
+  font-size: 16px;
+  line-height: 32px;
+  -webkit-box-align: center;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: horizontal;
+    -webkit-box-sizing: border-box;
+    align-items: center;
+    border-radius: 3px;
+    box-sizing: border-box;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-direction: row;
+    height: 32px;
+    margin: 1px 0 1px 8px;
+    overflow: hidden;
+    padding: 0 8px;
 }

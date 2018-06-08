@@ -1,6 +1,6 @@
 import { RECEIVE_CHANNEL, RECEIVE_CHANNELS } from '../../actions/channel_actions';
 
-initialState = {}
+let initialState = [];
 
 const ChannelReducer = (state = initialState, action) => {
   Object.freeze(state);
@@ -8,9 +8,14 @@ const ChannelReducer = (state = initialState, action) => {
     case RECEIVE_CHANNEL:
       return Object.assign({}, state, [action.channel.id]: action.channel);
     case RECEIVE_CHANNELS:
-      return Object.keys(action.channels).map(idx => action.channels[idx])
-
+      let newObject = {};
+      action.channels.map(channel => {
+        newObject[channel.id] = channel;
+      })
+      return Object.assign({}, state, newObject);
     default:
       return state;
   }
 }
+
+export default ChannelReducer;
