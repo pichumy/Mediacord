@@ -4,7 +4,7 @@ import { resetErrors } from '../../actions/error_actions';
 import SignUpForm from './signup_form';
 
 const mapStateToProps = state => ({
-  loading: state.loading.loading,
+  loading: state.ui.loading.loading,
   errors: state.errors.sessionErrors,
   formType: "Login",
   forgotPassword: "Forgot your password?",

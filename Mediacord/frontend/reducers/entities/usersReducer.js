@@ -1,4 +1,4 @@
-import { RECEIVE_NEW_SESSION } from '../actions/session_actions';
+import { RECEIVE_NEW_SESSION } from '../../actions/session_actions';
 
 const initialState = {};
 

@@ -1,8 +1,10 @@
 import usersReducer from './usersReducer';
 import serversReducer from './serversReducer';
+import channelsReducer from './channelsReducer';
 import { combineReducers } from 'redux';
 
 export default combineReducers({
     users: usersReducer,
-    servers: serversReducer
+    servers: serversReducer,
+    channels: channelsReducer
 });

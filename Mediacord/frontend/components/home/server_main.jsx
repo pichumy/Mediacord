@@ -3,7 +3,8 @@ import Loading from '../loading';
 import ServerNav from '../servers/server_nav_container';
 import ChannelNav from '../channels/channel_nav';
 import Nav from '../chat/nav';
-const Home = (props) => {
+
+const ServerMain = (props) => {
   if(props.loading){
     return(
       <Loading />
@@ -19,4 +20,4 @@ const Home = (props) => {
 }
 
 
-export default Home;
+export default ServerMain;

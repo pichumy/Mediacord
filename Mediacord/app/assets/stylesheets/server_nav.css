@@ -1,0 +1,52 @@
+.home-icon {
+  height: 50px;
+  width: 50px;
+  background-image: url('friends.png');
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: 50px 50px;
+  margin: 0 auto;
+}
+
+.sidebar{
+  width: 88px;
+  height: 100%;
+  background-color: #202225;
+  contain: layout;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  overflow: hidden;
+  position: relative;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: vertical;
+}
+.sidebar-item {
+  height: 50px;
+  position: relative;
+  width: 50px;
+  z-index: 1;
+  margin: 0 auto;
+  margin-bottom: 10px
+}
+
+.sidebar-icon {
+  height: 50px;
+  width: 50px;
+}
+
+.seperator {
+  background: none;
+  height: 2px;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  position: relative;
+  width: 30px;
+  border-top: 1px solid gray;
+}
+
+.online {
+  color: gray;
+  margin: 0 auto;
+  position: relative;
+}

@@ -1,0 +1,41 @@
+.hidden {
+  visibility: hidden;
+}
+
+.gear-dropdown {
+  position: absolute;
+  top: 50px;
+  right: 0px;
+  z-index: 1;
+  background-color: #282b30;
+  border: 1px solid gray;
+  padding: 10px;
+  box-shadow: -1px 4px 6px 1px rgba(0, 0, 0, 0.09);
+}
+
+.menu {
+  background: #282b30;
+}
+
+.menu-item {
+  color: hsla(0,0%,100%,.6);
+}
+
+.label-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.triangle {
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  transform: rotate(45deg);
+  z-index: 2;
+  background: #282b30;
+  right: 10px;
+  top: -11px;
+  border-top: 1px solid gray;
+  border-left: 1px solid gray;
+}

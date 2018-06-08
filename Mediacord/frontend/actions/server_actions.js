@@ -22,5 +22,5 @@ export const fetchServers = () => dispatch => {
 
 export const createServer = (serverData) => dispatch => {
   return APIUtils.postServer(serverData)
-    .then(() => dispatch(receiveServer(serverData)), error => dispatch(receiveErrors(error)))
+    .then((server) => dispatch(receiveServer(server)), error => dispatch(receiveErrors(error)))
 }

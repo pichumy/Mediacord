@@ -1,5 +1,5 @@
-import { START_LOADING, RECEIVE_NEW_USER, RECEIVE_NEW_SESSION, LOGOUT_USER } from '../actions/session_actions';
-import { RECEIVE_ERRORS } from '../actions/error_actions';
+import { START_LOADING, RECEIVE_NEW_USER, RECEIVE_NEW_SESSION, LOGOUT_USER } from '../../actions/session_actions';
+import { RECEIVE_ERRORS } from '../../actions/error_actions';
 
 const initialState = {
   loading: false,
