@@ -7,6 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 User.delete_all
 Server.delete_all
+Channel.delete_all
+Log.delete_all
+Message.delete_all
 
 user1 = User.new(username: "Admin", password:"password")
 user2 = User.new(username: "Admin1", password:"password")
@@ -22,3 +25,16 @@ poi.save!
 
 gb = Server.new(name: "Grand Blue", avatar_url: "grandblue.png");
 gb.save!
+
+ch1 = Channel.new(name: "General", server_id: poi.id);
+ch2 = Channel.new(name: "General 2", server_id: poi.id);
+
+ch1.save!
+ch2.save!
+log = Log.new(channel_id: ch1.id);
+log.save!
+log2 = Log.new(channel_id: ch2.id);
+ch2.save!
+
+message1 = Message.new(log_id: log.id, user_id: user1.id, text:"First message");
+message2 = Message.new(log_id: log.id, user_id: user1.id, text:"Second message");

@@ -8,20 +8,21 @@ class ServerMain extends React.Component {
 
   constructor(props){
     super(props);
-    // this.state = {
-    //   defaultChannel = 1,
-    // }
   }
+
   render(){
     if(this.props.loading){
       return(
         <Loading />
       )
     }
+
     return(
       <div className="home">
         <ServerNav />
-        <ChannelNav signOut={this.props.signOut} serverId={this.props.match.params.id} />
+        <ChannelNav
+          signOut={this.props.signOut}
+          />
         <Nav />
       </div>
     )

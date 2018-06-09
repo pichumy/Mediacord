@@ -1,16 +1,17 @@
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
+import { logoutSession } from '../../actions/session_actions';
+import { channelsSelector } from '../../reducers/selectors';
 import { fetchChannels } from '../../actions/channel_actions';
 import ChannelNav from './channel_nav';
-import { channelsSelector } from '../../reducers/selectors';
+import { withRouter } from 'react-router-dom'
 
 const mapStateToProps = (state, ownProps) => ({
-  channels: channelsSelector(state, ownProps.serverId),
+  channels: channelsSelector(state, ownProps.location.pathname.substring(9, 10)),
   loading: state.ui.loading.loading,
-  serverId: ownProps.serverId
 })
 
 const mapDispatchToProps = dispatch => ({
   fetchChannels: (serverId) => dispatch(fetchChannels(serverId))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(ChannelNav);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ChannelNav));

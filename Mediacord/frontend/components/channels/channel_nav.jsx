@@ -15,13 +15,21 @@ class ChannelNav extends React.Component{
   }
 
   componentDidMount(){
-    this.props.fetchChannels(this.props.serverId);
+    this.props.fetchChannels(this.props.match.params.id);
   }
 
   switchChannel(idx){
     return (e) => this.setState({
-      selectedChannel: idx.idx
+      selectedChannel: idx
     })
+  }
+
+  componentWillReceiveProps(nextProps){
+    if(nextProps.channels.length > 0 && nextProps.location.pathname.length < 12){
+      let channel_id = nextProps.channels[this.state.selectedChannel].id;
+      let correct_url = `/servers/${nextProps.match.params.id}/channels/${channel_id}`;
+      this.props.history.push(correct_url);
+    }
   }
 
   render(){

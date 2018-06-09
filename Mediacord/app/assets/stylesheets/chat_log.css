@@ -10,9 +10,30 @@
   height: 88%;
 }
 
-.message-input {
-  height: 52px;
-  margin-bottom: 1px;
+.message-container {
+  height: 94px;
   padding: 0 10px;
-  background: white;
+  background: hsla(218,5%,47%,.3);
+  display: inline block;
+  /* flex-wrap: nowrap; */
+}
+
+.message-input {
+  margin-top: 10px;
+  height: 20px;
+  padding: 10px 0;
+  background-color: rgba(0,0,0,.1);
+  border-color: rgba(0,0,0,.3);
+  color: #f6f6f7;
+  border-radius: 3px;
+  border-style: solid;
+  border-width: 1px;
+  box-sizing: border-box;
+  outline: none;
+  width: 80%;
+}
+
+.message-button {
+  display: inline-block;
+  margin-left: 10px;
 }

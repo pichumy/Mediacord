@@ -1,8 +1,10 @@
 import React from 'react';
-import ChatLog from './chat_log';
+import ChatLog from './chat_log_container';
 import UserList from './user_list';
 
 class Nav extends React.Component {
+
+
   render(){
     return(
       <div className="main-nav">

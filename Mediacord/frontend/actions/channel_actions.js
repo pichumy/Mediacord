@@ -15,8 +15,9 @@ const receiveChannel = (channel) => {
 //   type: START_LOADING
 // })
 
-const receiveChannels = (channels) => {
+const receiveChannels = (server) => {
   // array of channels
+  let channels = server.channels;
   return (
     {type: RECEIVE_CHANNELS, channels}
   )
@@ -31,5 +32,5 @@ export const createChannel = (channelForm) => dispatch =>  {
 export const fetchChannels = (serverId) => dispatch => {
   // dispatch(startLoading())
   return APIUtil.getChannels(serverId)
-    .then((channels) => dispatch(receiveChannels(channels)))
+    .then((object) => dispatch(receiveChannels(object.server)))
 }

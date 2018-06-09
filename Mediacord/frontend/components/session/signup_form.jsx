@@ -99,10 +99,18 @@ class SignUpForm extends React.Component {
               <div className="error">{this.state.error.general}</div>
               <h5 className="input-title">Username</h5>
               <div className="error">{this.state.error.username}</div>
-              <input className="input-default" type="text" onChange={this.handleInput('username')} value={this.state.username}></input>
+              <input className="input-default"
+                type="text"
+                onChange={this.handleInput('username')}
+                value={this.state.username}>
+              </input>
               <h5 className="input-title">Password</h5>
               <div className="error">{this.state.error.password}</div>
-              <input className="input-default" type="password" onChange={this.handleInput('password')} value={this.state.password}></input>
+              <input className="input-default"
+                type="password"
+                onChange={this.handleInput('password')}
+                value={this.state.password}>
+              </input>
               <button onClick={this.handleClick}>
                 <div className="forgot-password">
                   <div className="link-color">
