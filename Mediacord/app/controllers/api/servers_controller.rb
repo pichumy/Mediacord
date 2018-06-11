@@ -10,12 +10,17 @@ class Api::ServersController < ApplicationController
   def show
     @server = Server.find(params[:id])
     @channels = @server.channels
-    render :show 
+    render :show
   end
 
   def create
     @server = Server.new(server_params)
     if @server.save
+      # server = Server.find_by(name: @server.name)
+      # channel = Channel.new(server_id: server.id, name: "General");
+      # channel.save
+      # @channels = @server.channels
+      @channels = []
       render :show
     else
       render json: @server.errors.full_messages, status: 422

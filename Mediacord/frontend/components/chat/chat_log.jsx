@@ -6,8 +6,8 @@ import Loading from '../loading';
 class ChatLog extends React.Component {
 
   componentWillReceiveProps(nextProps){
-    if(this.props.channelId !== nextProps.channelId){
-      this.props.fetchMessages(nextProps.channelId);
+    if(this.props.channelId !== nextProps.channelId && nextProps.channelId !== undefined){
+      nextProps.fetchMessages(nextProps.channelId);
     }
   }
 

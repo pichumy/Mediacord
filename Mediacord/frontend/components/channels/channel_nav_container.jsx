@@ -6,7 +6,7 @@ import ChannelNav from './channel_nav';
 import { withRouter } from 'react-router-dom'
 
 const mapStateToProps = (state, ownProps) => ({
-  channels: channelsSelector(state, ownProps.location.pathname.substring(9, 10)),
+  channels: channelsSelector(state, ownProps.match.params.id),
   loading: state.ui.loading.loading,
 })
 

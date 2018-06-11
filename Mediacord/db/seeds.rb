@@ -25,14 +25,14 @@ poi.save!
 gb = Server.new(name: "Grand Blue", avatar_url: "grandblue.png");
 gb.save!
 
-ch1 = Channel.new(name: "General", server_id: poi.id);
+ch1 = Channel.new(name: "General 1", server_id: gb.id);
 ch2 = Channel.new(name: "General 2", server_id: poi.id);
-
 ch1.save!
 ch2.save!
-ch2.save!
 
-message1 = Message.new(channel_id: ch1.id, user_id: user1.id, text:"First message");
-message2 = Message.new(channel_id: ch1.id, user_id: user1.id, text:"Second message");
+message1 = Message.new(channel_id: ch2.id, user_id: user1.id, text:"First message");
+message2 = Message.new(channel_id: ch2.id, user_id: user1.id, text:"Second message");
 message1.save!
-message2.save! 
+message2.save!
+message3 = Message.new(channel_id: ch1.id, user_id: user2.id, text:"Just to not break");
+message3.save!

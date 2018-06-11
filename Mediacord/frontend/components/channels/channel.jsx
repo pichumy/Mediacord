@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 
-const Channel = ({ switchChannel, channel, selectedChannel, history, location }) => {
+const Channel = ({ switchChannel, channel, selectedChannel, history, match}) => {
   let classN = "channel-text";
   let container = ""
-  let serverId = location.pathname.substring(9, 10);
+  let serverId = match.params.id;
   let LinkURL = `/servers/${serverId}/channels/${channel.id}`;
   if(channel.id == selectedChannel){
     classN = "channel-text selected-text";

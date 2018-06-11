@@ -7,7 +7,7 @@ export const START_LOADING = 'START_LOADING';
 const receiveChannel = (channel) => {
   dispatch(closeModal());
   return(
-    { type: RECEIVE_CHANNEL, channel }
+    { type: RECEIVE_CHANNEL, channel: channel.channel }
   )
 }
 

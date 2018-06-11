@@ -26,14 +26,25 @@ class ChannelNav extends React.Component{
   }
 
   componentWillReceiveProps(nextProps){
-    if(nextProps.channels.length > 0 && nextProps.location.pathname.length < 12){
-      let channel_id = nextProps.channels[this.state.selectedChannel].id;
-      let correct_url = `/servers/${nextProps.match.params.id}/channels/${channel_id}`;
-      this.props.history.push(correct_url);
+
+    if(this.props.match.params.id !== nextProps.match.params.id){
+      nextProps.fetchChannels(nextProps.match.params.id);
+    }
+    else if(Object.keys(nextProps.channels).length > 0){
+      let channel_id;
+      if(!nextProps.match.params.channel_id){
+        let idx = Object.keys(nextProps.channels)[0];
+        channel_id = nextProps.channels[idx].id
+        let correct_url = `/servers/${nextProps.match.params.id}/channels/${channel_id}`;
+        this.props.history.push(correct_url);
+      }else{
+        channel_id = nextProps.match.params.channel_id;
+      }
       this.setState({
         selectedChannel: channel_id
       })
     }
+
   }
 
   render(){
@@ -41,7 +52,7 @@ class ChannelNav extends React.Component{
     // if(this.props.loading){
     //   <Loading />
     // }
-    const channels = this.props.channels.map( (channel, idx) => {
+    const channels = Object.values(this.props.channels).map( (channel) => {
       return <Channel channel={channel} key={channel.id} selectedChannel={this.state.selectedChannel} switchChannel={this.switchChannel}/>
     });
 

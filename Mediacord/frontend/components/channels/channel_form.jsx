@@ -1,4 +1,7 @@
 import React from 'react';
+import { matchPath } from 'react-router-dom';
+
+
 
 class ChannelForm extends React.Component {
 
@@ -31,9 +34,17 @@ class ChannelForm extends React.Component {
   submitForm(e){
     e.stopPropagation();
     e.preventDefault();
-    let channel = {};
-    channel.name = this.state.channel;
-    channel.server_id = this.props.serverId;
+    const match = matchPath(this.props.location.pathname, {
+      path: '/servers/:id',
+    })
+
+    let channel = {
+      name: this.state.channel,
+      server_id: parseInt(match.params.id)
+    };
+    // console.log(this.props);
+    // channel.name = this.state.channel;
+    // channel.server_id = parseInt(this.props.serverId);
     this.props.createChannel(channel);
   }
 

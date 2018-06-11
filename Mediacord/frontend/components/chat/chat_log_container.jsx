@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = (state, ownProps) => ({
   messages: state.entities.messages,
-  channelId: ownProps.location.pathname.substring(20),
+  channelId: ownProps.match.params.channel_id,
   current_user: state.session.id
 })
 

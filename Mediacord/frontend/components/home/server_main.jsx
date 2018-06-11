@@ -16,7 +16,6 @@ class ServerMain extends React.Component {
         <Loading />
       )
     }
-
     return(
       <div className="home">
         <ServerNav />
