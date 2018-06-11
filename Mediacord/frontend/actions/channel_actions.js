@@ -3,6 +3,8 @@ import { closeModal } from './modal_actions';
 export const RECEIVE_CHANNEL = "RECEIVE_CHANNEL";
 export const RECEIVE_CHANNELS = "RECEIVE_CHANNELS";
 export const START_LOADING = 'START_LOADING';
+import { RECEIVE_ERRORS, RESET_ERRORS, receiveErrors, resetErrors } from './error_actions'
+
 
 const receiveChannel = (channel) => {
   dispatch(closeModal());
@@ -26,7 +28,7 @@ const receiveChannels = (server) => {
 export const createChannel = (channelForm) => dispatch =>  {
   // dispatch(startLoading())
   return APIUtil.postChannel(channelForm)
-    .then((channel) => dispatch(receiveChannel(channel)))
+    .then((channel) => dispatch(receiveChannel(channel)), error => dispatch(receiveErrors("channel", error.responseJSON)))
 };
 
 export const fetchChannels = (serverId) => dispatch => {

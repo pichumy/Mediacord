@@ -8,7 +8,7 @@ import { matchPath } from 'react-router';
 
 
 const mapStateToProps = (state, ownProps) => ({
-  errors: state.errors.channel,
+  errors: state.errors.channelErrors,
 })
 
 const mapDispatchToProps = dispatch => ({

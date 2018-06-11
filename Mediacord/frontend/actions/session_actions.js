@@ -34,17 +34,17 @@ const receiveNewUser = (user) => (
 export const createNewSession = userForm => dispatch => {
   dispatch(startLoading());
   return APIUtils.postSession(userForm)
-    .then(user => dispatch(receiveNewSession(user)), error => dispatch(receiveErrors(error.responseJSON)));
+    .then(user => dispatch(receiveNewSession(user)), error => dispatch(receiveErrors("session", error.responseJSON)));
 };
 
 export const logoutSession = () => dispatch => {
   dispatch(startLoading());
   return APIUtils.deleteSession()
-    .then(() => dispatch(logoutUser()), error => dispatch(receiveErrors(error.responseJSON)));
+    .then(() => dispatch(logoutUser()), error => dispatch(receiveErrors("session", error.responseJSON)));
 };
 
 export const createUser = userForm => dispatch => {
   dispatch(startLoading());
   return APIUtils.postUser(userForm)
-    .then(user => dispatch(receiveNewSession(user)), error => dispatch(receiveErrors(error.responseJSON)));
+    .then(user => dispatch(receiveNewSession(user)), error => dispatch(receiveErrors("session", error.responseJSON)));
 };

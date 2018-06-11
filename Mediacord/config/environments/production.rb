@@ -90,9 +90,12 @@ Rails.application.configure do
 
   # Generate digests for assets URLs
   config.assets.digest = true
-
-  config.web_socket_server_url = "wss://mediacord.herokuapp.com/cable"
-  config.action_cable.allowed_request_origins = ['https://mediacord.herokuapp.com', 'http://mediacord.herokuapp.com']
+  config.web_socket_server_url = "wss://#{ENV['RAILS_HOST']}/cable"
+  config.action_cable.allowed_request_origins =
+  ['https://mediacord.herokuapp.com',
+   'http://mediacord.herokuapp.com',
+   %r{http://mediacord.*}
+  ]
   if ENV["RAILS_LOG_TO_STDOUT"].present?
     logger           = ActiveSupport::Logger.new(STDOUT)
     logger.formatter = config.log_formatter
