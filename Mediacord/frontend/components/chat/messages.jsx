@@ -1,18 +1,11 @@
 import React from 'react';
 
-class Message extends React.Component {
-
-  componentDidMount(){
-    let logId = this.props.logs[this.props.channelId].id;
-    this.props.fetchMessages(logId);
-  }
-
-
-  render(){
-    return (
-      <div className="message-log">Message Log goes here</div>
-    )
-  }
+const Message = ({ message }) => {
+  return (
+    <div className="message-container">
+      <div className="user-avatar"> Avatar placeholder </div>
+      <div className="message-text"> {message.text}</div>
+    </div>
+  )
 }
-
 export default Message;

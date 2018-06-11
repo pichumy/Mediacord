@@ -8,6 +8,7 @@ class ChannelNav extends React.Component{
 
   constructor(props){
     super(props);
+    let channel;
     this.state = {
       selectedChannel: 0
     }
@@ -18,9 +19,9 @@ class ChannelNav extends React.Component{
     this.props.fetchChannels(this.props.match.params.id);
   }
 
-  switchChannel(idx){
+  switchChannel(channelId){
     return (e) => this.setState({
-      selectedChannel: idx
+      selectedChannel: channelId
     })
   }
 
@@ -29,6 +30,9 @@ class ChannelNav extends React.Component{
       let channel_id = nextProps.channels[this.state.selectedChannel].id;
       let correct_url = `/servers/${nextProps.match.params.id}/channels/${channel_id}`;
       this.props.history.push(correct_url);
+      this.setState({
+        selectedChannel: channel_id
+      })
     }
   }
 
@@ -38,7 +42,7 @@ class ChannelNav extends React.Component{
     //   <Loading />
     // }
     const channels = this.props.channels.map( (channel, idx) => {
-      return <Channel channel={channel} key={channel.id} selectedChannel={this.state.selectedChannel} idx={idx} switchChannel={this.switchChannel}/>
+      return <Channel channel={channel} key={channel.id} selectedChannel={this.state.selectedChannel} switchChannel={this.switchChannel}/>
     });
 
     return (

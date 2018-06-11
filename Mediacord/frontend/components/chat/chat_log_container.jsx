@@ -1,15 +1,16 @@
 import { connect } from 'react-redux';
 import ChatLog from './chat_log';
-import { fetchLog } from '../../actions/log_actions';
+import { fetchMessages } from '../../actions/message_actions';
 import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = (state, ownProps) => ({
-  log: state.entities.logs,
+  messages: state.entities.messages,
   channelId: ownProps.location.pathname.substring(20),
+  current_user: state.session.id
 })
 
 const mapDispatchToProps = dispatch => ({
-  fetchLog: (channelId) => dispatch(fetchLog(channelId))
+  fetchMessages: (channelId) => dispatch(fetchMessages(channelId))
 })
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ChatLog));

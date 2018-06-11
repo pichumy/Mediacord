@@ -1,6 +1,6 @@
-export const getMessages = (logId) => {
+export const getMessages = (channelId) => {
   return $.ajax({
     method: "GET",
-    url: `api/logs/${logId}`
+    url: `api/channels/${channelId}`
   })
 }

@@ -18,10 +18,8 @@ class ChannelSettingsBar extends React.Component {
   }
 
   handleModal(e){
-    // console.log(e);
     e.preventDefault();
     e.stopPropagation();
-    console.log(this);
     this.props.openModal();
   }
 

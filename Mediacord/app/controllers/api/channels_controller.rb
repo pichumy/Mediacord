@@ -3,8 +3,6 @@ class Api::ChannelsController < ApplicationController
   def create
     @channel = Channel.new(channel_params)
     if @channel.save
-      @log = Log.new(channel_id: @channel.id)
-      @log.save!
       render :show
     else
       render json: @channel.errors.full_messages, status: 422
@@ -13,8 +11,7 @@ class Api::ChannelsController < ApplicationController
 
   def show
     @channel = Channel.find(params[:id])
-    p @channel
-    @log = @channel.log
+    @messages = @channel.messages
     render :show
   end
 

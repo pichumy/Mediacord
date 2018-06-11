@@ -8,7 +8,6 @@
 User.delete_all
 Server.delete_all
 Channel.delete_all
-Log.delete_all
 Message.delete_all
 
 user1 = User.new(username: "Admin", password:"password")
@@ -31,10 +30,9 @@ ch2 = Channel.new(name: "General 2", server_id: poi.id);
 
 ch1.save!
 ch2.save!
-log = Log.new(channel_id: ch1.id);
-log.save!
-log2 = Log.new(channel_id: ch2.id);
 ch2.save!
 
-message1 = Message.new(log_id: log.id, user_id: user1.id, text:"First message");
-message2 = Message.new(log_id: log.id, user_id: user1.id, text:"Second message");
+message1 = Message.new(channel_id: ch1.id, user_id: user1.id, text:"First message");
+message2 = Message.new(channel_id: ch1.id, user_id: user1.id, text:"Second message");
+message1.save!
+message2.save! 
