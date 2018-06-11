@@ -6,5 +6,5 @@ test:
 
 production:
   adapter: redis
-  url: redis://localhost:6379/1
+  url: redis://redistogo:87a97079056342919f6d2c2750c74873@tetra.redistogo.com:9199/
   channel_prefix: Mediacord_production
