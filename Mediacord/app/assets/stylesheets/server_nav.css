@@ -12,7 +12,7 @@
   width: 88px;
   height: 100%;
   background-color: #202225;
-  contain: layout;
+  /* contain: layout; */
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
