@@ -5,6 +5,10 @@ import Loading from '../loading';
 
 class ChatLog extends React.Component {
 
+  componentDidMount(){
+    this.props.fetchMessages(this.props.channelId);
+  }
+
   componentWillReceiveProps(nextProps){
     if(this.props.channelId !== nextProps.channelId && nextProps.channelId !== undefined){
       nextProps.fetchMessages(nextProps.channelId);
@@ -13,6 +17,7 @@ class ChatLog extends React.Component {
 
 
   render (){
+    console.log("Render chat_log");
     if(this.props.messages.length === 0){
       return (
         <Loading />

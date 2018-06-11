@@ -32,8 +32,8 @@ class MessageInput extends React.Component {
     }, {
       connected: () => {},
       received: (data) => {
+        console.log(data);
         if(data.id){
-          console.log(data);
           fetchMessages(this.props.channelId);
         }
       },
