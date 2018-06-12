@@ -25,6 +25,8 @@ poi.save!
 gb = Server.new(name: "Grand Blue", avatar_url: "grandblue.png");
 gb.save!
 
+ServerMembership.create!(user_id: user1.id, server_id: poi.id);
+
 ch1 = Channel.new(name: "General 1", server_id: gb.id);
 ch2 = Channel.new(name: "General 2", server_id: poi.id);
 ch1.save!

@@ -4,10 +4,14 @@
   height: 100%;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 .message-log {
   height: 88%;
+  overflow: scroll;
+  display: flex;
+  flex-direction: column-reverse;
 }
 
 .message-container {
@@ -35,4 +39,14 @@
 .message-button {
   display: inline-block;
   margin-left: 10px;
+}
+
+.message-container {
+  /* border-top: 1px solid hsla(0,0%,100%,.04); */
+  border-bottom: 1px solid hsla(0,0%,100%,.04);
+  margin-left: 3px;
+  margin-right: 2px;
+  user-select: text;
+  word-wrap: break-word;
+  box-sizing: border-box;
 }

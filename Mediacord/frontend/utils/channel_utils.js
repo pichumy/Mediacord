@@ -1,5 +1,4 @@
 export const postChannel = (channel) => {
-  console.log(channel);
   return $.ajax({
     method: "post",
     url: "api/channels/",

@@ -1,7 +1,7 @@
 import { RECEIVE_CHANNEL } from '../../actions/channel_actions';
 import { RECEIVE_CHANNEL_ERROR, RESET_ERRORS } from '../../actions/error_actions';
 
-const initialState = {};
+const initialState = [];
 
 const channelsErrorReducer = (state = initialState, action) => {
   Object.freeze(state);

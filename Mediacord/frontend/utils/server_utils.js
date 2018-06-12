@@ -13,4 +13,11 @@ export const postServer = (server) => {
   })
 }
 
+export const getUserList = (serverId) => {
+  return $.ajax({
+    method: "GET",
+    url: `api/servers/${serverId}/user_list`
+  })
+}
+
 //TODO: getServer, updateServer, deleteServer

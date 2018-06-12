@@ -6,26 +6,26 @@ import Loading from '../loading';
 class ChatLog extends React.Component {
 
   componentDidMount(){
-    this.props.fetchMessages(this.props.channelId);
+    if(this.props.channelId){
+      this.props.fetchMessages(this.props.channelId);
+    }
   }
 
   componentWillReceiveProps(nextProps){
-    if(this.props.channelId !== nextProps.channelId && nextProps.channelId !== undefined){
+    if(nextProps.channelId && this.props.channelId !== nextProps.channelId){
       nextProps.fetchMessages(nextProps.channelId);
     }
   }
 
-
   render (){
-    console.log("Render chat_log");
-    if(this.props.messages.length === 0){
+    if(this.props.messages.length === 0 || Object.keys(this.props.userList).length === 0){
       return (
         <Loading />
       )
     }
-    let messageItems = this.props.messages.array.map(message => {
+    let messageItems = this.props.messages.array.reverse().map(message => {
       return (
-        <Messages message={message} key={message.id} />
+        <Messages message={message} key={message.id} userList={this.props.userList}/>
       )
     })
     return(

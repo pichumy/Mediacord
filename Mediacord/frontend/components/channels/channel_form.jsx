@@ -19,17 +19,17 @@ class ChannelForm extends React.Component {
     });
   }
 
-  // renderErrors(){
-  //   return(
-  //     <ul>
-  //       {this.props.errors.map((error, i) => (
-  //         <li key={`error-${i}`}>
-  //           {error}
-  //         </li>
-  //       ))}
-  //     </ul>
-  //   );
-  // }
+  renderErrors(){
+    return(
+      <ul>
+        {this.props.errors.map((error, i) => (
+          <li className="error" key={`error-${i}`}>
+            {error}
+          </li>
+        ))}
+      </ul>
+    );
+  }
 
   submitForm(e){
     e.stopPropagation();
@@ -42,18 +42,17 @@ class ChannelForm extends React.Component {
       name: this.state.channel,
       server_id: parseInt(match.params.id)
     };
-    // console.log(this.props);
-    // channel.name = this.state.channel;
-    // channel.server_id = parseInt(this.props.serverId);
     this.props.createChannel(channel);
   }
 
   render(){
+    console.log(this.props);
     return(
       <div className="form-container">
         <div className="session-form" onClick={e => e.stopPropagation()}>
           <div className="centeringWrapper">
             <label className="title add-margin"> Channel Name
+                {this.renderErrors()}
                 <input className="input-default add-margin" type="text" value={this.state.channel} onChange={this.update('channel')}></input>
             </label>
             <input className="submit-button add-margin" onClick={this.submitForm} type="submit" value="Create"></input>

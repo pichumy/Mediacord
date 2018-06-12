@@ -2,4 +2,46 @@
   background-color: #2f3136;
   height: 100%;
   width: 20%;
+  font-family: Helvetica;
+}
+
+.user-header {
+  color: hsla(0,0%,100%,.4);
+  font-size: 12px;
+  font-weight: 500;
+  height: 40px;
+  letter-spacing: .08em;
+  line-height: 20px;
+  overflow: hidden;
+  padding-left: 16px;
+  padding-right: 8px;
+  padding-top: 20px;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.username {
+  -webkit-box-align: center;
+  align-items: center;
+  display: flex;
+  line-height: 17px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: rgb(52, 152, 219);
+  margin-left: 10px;
+}
+
+.userlist-item {
+  -webkit-box-align: center;
+  -webkit-box-flex: 1;
+  align-items: center;
+  box-sizing: border-box;
+  display: flex;
+  flex-grow: 1;
+  padding: 8px;
+  margin-left: 15px;
+  padding-top: 0px;
+  font-family: Helvetica;
 }

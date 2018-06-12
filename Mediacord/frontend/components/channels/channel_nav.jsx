@@ -27,7 +27,7 @@ class ChannelNav extends React.Component{
 
   componentWillReceiveProps(nextProps){
 
-    if(this.props.match.params.id !== nextProps.match.params.id){
+    if(this.props.match.params.id && this.props.match.params.id !== nextProps.match.params.id){
       nextProps.fetchChannels(nextProps.match.params.id);
     }
     else if(Object.keys(nextProps.channels).length > 0){

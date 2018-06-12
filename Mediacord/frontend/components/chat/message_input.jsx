@@ -24,16 +24,17 @@ class MessageInput extends React.Component {
   }
 
   createSocket() {
-    // let cable = Cable.createConsumer('ws://localhost:3000/cable');
-    let cable = Cable.createConsumer('wss://mediacord.herokuapp.com/cable')
+    let cable = Cable.createConsumer('ws://localhost:3000/cable');
+    // let cable = Cable.createConsumer('wss://mediacord.herokuapp.com/cable')
     let fetchMessages = this.props.fetchMessages;
     this.chats = cable.subscriptions.create({
       channel: 'ChatChannel'
     }, {
       connected: () => {},
       received: (data) => {
-        console.log(data);
-        fetchMessages(this.props.channelId);
+        if(data.id){
+          fetchMessages(this.props.channelId);
+        }
       },
       create: function(text, channelId, userId) {
         this.perform('create', {

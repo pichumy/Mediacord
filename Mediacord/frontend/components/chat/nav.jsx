@@ -1,6 +1,6 @@
 import React from 'react';
 import ChatLog from './chat_log_container';
-import UserList from './user_list';
+import UserList from './user_list_container';
 
 class Nav extends React.Component {
 
