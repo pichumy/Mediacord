@@ -7,10 +7,17 @@ class ServerNav extends React.Component {
 
   constructor(props){
     super(props);
+    this.handleModal = this.handleModal.bind(this);
   }
 
   componentDidMount(){
     this.props.fetchServers();
+  }
+
+  handleModal(e){
+    e.preventDefault();
+    e.stopPropagation();
+    this.props.openModal();
   }
 
   render(){
@@ -20,7 +27,7 @@ class ServerNav extends React.Component {
       )
     }
     const servers = this.props.servers.map(server => {
-      return <Server server={server} key={server.id} />
+      return <Server match={this.props.match} server={server} key={server.id} />
     });
     return(
       <div className="server-nav">
@@ -29,6 +36,11 @@ class ServerNav extends React.Component {
           <div className="online"> Online </div>
           <div className="seperator"></div>
           {servers}
+          <div className="sidebar-item">
+            <button className="add-server-button" onClick={this.handleModal}>
+              <span className="plus">+</span>
+            </button>
+          </div>
         </div>
       </div>
     )

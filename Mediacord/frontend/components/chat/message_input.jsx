@@ -61,18 +61,24 @@ class MessageInput extends React.Component {
       <div className="message-container">
         <input className="message-input"
           type="text"
+          placeholder="Type your message here..."
           value={this.state.text}
           onChange={this.handleChange('text')}>
         </input>
-        <button
-          onClick={ (e) => this.handleSendEvent(e) }
-          className="message-button">
-          Submit
-        </button>
+
       </div>
     </form>
     )
   }
 }
+// retired button due to not needing it...
+// <div className="button-container">
+//   <button
+//     onClick={ (e) => this.handleSendEvent(e) }
+//     className="message-button">
+//     Submit
+//   </button>
+// </div>
+
 
 export default MessageInput;

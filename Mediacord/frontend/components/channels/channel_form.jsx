@@ -46,7 +46,6 @@ class ChannelForm extends React.Component {
   }
 
   render(){
-    console.log(this.props);
     return(
       <div className="form-container">
         <div className="session-form" onClick={e => e.stopPropagation()}>
@@ -58,7 +57,7 @@ class ChannelForm extends React.Component {
             <input className="submit-button add-margin" onClick={this.submitForm} type="submit" value="Create"></input>
           </div>
         </div>
-    </div>
+      </div>
     )
   }
 }

@@ -20,4 +20,10 @@ export const getUserList = (serverId) => {
   })
 }
 
+export const joinServer = (serverId) => {
+  return $.ajax({
+    method: "POST",
+    url: `api/servers/${serverId}/join_server`
+  })
+}
 //TODO: getServer, updateServer, deleteServer

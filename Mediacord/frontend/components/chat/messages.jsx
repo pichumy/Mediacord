@@ -8,11 +8,16 @@ const Message = ({ message, userList }) => {
     }
   }
   return (
-    <div className="message-container">
-      <div>{user.username}</div>
-      <br></br>
-      <div style={styles.userAvatar}></div>
-      <div className="message-text"> {message.text}</div>
+    <div className="message-item-container">
+      <div className="message-avatar">
+        <div style={styles.userAvatar}></div>
+      </div>
+      <div className="message-author">
+        {user.username}
+      </div>
+      <div className="message-text">
+        {message.text}
+      </div>
     </div>
   )
 }

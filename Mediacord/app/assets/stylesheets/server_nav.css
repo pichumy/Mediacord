@@ -12,10 +12,9 @@
   width: 88px;
   height: 100%;
   background-color: #202225;
-  /* contain: layout; */
   display: flex;
   flex-direction: column;
-  flex-shrink: 0;
+  justify-content: flex-start;
   overflow: hidden;
   position: relative;
   -webkit-box-direction: normal;
@@ -25,9 +24,14 @@
   height: 50px;
   position: relative;
   width: 50px;
-  z-index: 1;
   margin: 0 auto;
   margin-bottom: 10px
+}
+
+.sidebar-item:hover {
+  border-radius: 40%;
+  background-color: #7289da;
+  transition-duration: 1s;
 }
 
 .sidebar-icon {
@@ -49,4 +53,27 @@
   color: gray;
   margin: 0 auto;
   position: relative;
+}
+
+.plus {
+  color: #72767d;
+  font-size: 40px;
+  font-family: 'Libre Franklin', sans-serif;
+  width: 100%;
+  height: 50px;
+}
+
+.add-server-button {
+  border: 1px dashed #72767d;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background-color: #36393f;
+  border-radius: 50%;
+  text-align: center;
+}
+
+.active {
+  border-left: 3px solid gray;
+  border-radius: 40%;
 }

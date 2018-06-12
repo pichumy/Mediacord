@@ -1,5 +1,6 @@
 import * as APIUtils from '../utils/server_utils';
 import { RECEIVE_ERRORS, RESET_ERRORS, receiveErrors, resetErrors } from './error_actions'
+import { postChannel } from '../utils/channel_utils';
 export const RECEIVE_SERVER = "RECEIVE_SERVER";
 export const RECEIVE_SERVERS = "RECEIVE_SERVERS";
 export const RECEIVE_USER_LIST = "RECEIVE_USER_LIST";
@@ -29,7 +30,11 @@ export const fetchServers = () => dispatch => {
 
 export const createServer = (serverData) => dispatch => {
   return APIUtils.postServer(serverData)
-    .then((server) => dispatch(receiveServer(server)), error => dispatch(receiveErrors(error)))
+    .then((data) => {
+      postChannel({name: "General", server_id: data.server.id});
+      APIUtils.joinServer(data.server.id);
+      dispatch(receiveServer(data.server));
+    }, error => dispatch(receiveErrors(error)))
 }
 
 export const fetchUserList = (serverId) => dispatch => {

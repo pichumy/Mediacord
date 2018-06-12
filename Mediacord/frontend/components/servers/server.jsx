@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Server = ({ server }) => {
+const Server = ({ server, match }) => {
   const serverLink = `/servers/${server.id}`;
   const styles = {
     icon: {
@@ -15,12 +15,16 @@ const Server = ({ server }) => {
       borderRadius: '50%',
     }
   }
+  let classStyle = "sidebar-item";
+  if(server.id == match.params.id){
+    classStyle = "sidebar-item active";
+  }
   return (
-    <div className="sidebar-item">
+    <ul className={classStyle}>
       <Link to={serverLink}>
-        <div style={styles.icon}></div>
+        <li style={styles.icon}></li>
       </Link>
-    </div>
+    </ul>
   )
 }
 

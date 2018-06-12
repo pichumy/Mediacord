@@ -6,7 +6,7 @@ const sessionsReducer = (state = initialState, action) => {
   Object.freeze(state);
   switch (action.type){
       case RECEIVE_SERVER:
-        return Object.assign({}, state, {[action.server.id]: action.server});
+        return [...state, action.server]
       case RECEIVE_SERVERS:
         return action.servers;
       default:
