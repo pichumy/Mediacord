@@ -23,7 +23,6 @@ class ChatLog extends React.Component {
         <Loading />
       )
     }
-    console.log(this.props.messages.array);
     let messageItems = this.props.messages.array
       .sort( (a, b) => {
         return a.id - b.id;

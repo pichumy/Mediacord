@@ -1,5 +1,5 @@
 import { START_LOADING, RECEIVE_NEW_USER, RECEIVE_NEW_SESSION, LOGOUT_USER } from '../../actions/session_actions';
-import { RECEIVE_ERRORS } from '../../actions/error_actions';
+import { RECEIVE_ERRORS, RECEIVE_SESSION_ERROR, RECEIVE_CHANNEL_ERROR } from '../../actions/error_actions';
 
 const initialState = {
   loading: false,
@@ -17,6 +17,10 @@ const loadingReducer = (state = initialState, action) => {
     case START_LOADING:
       return Object.assign({}, state, {loading: true});
     case RECEIVE_ERRORS:
+      return Object.assign({}, state, {loading: false});
+    case RECEIVE_SESSION_ERROR:
+      return Object.assign({}, state, {loading: false});
+    case RECEIVE_CHANNEL_ERROR:
       return Object.assign({}, state, {loading: false});
     default:
       return state;

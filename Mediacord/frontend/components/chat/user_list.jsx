@@ -41,7 +41,6 @@ class UserList extends React.Component {
               <div key={user.id} className="userlist-item">
                 <div style={styles.img}></div>
                 <div className="username">{user.username}</div>
-
               </div>
             )
           })

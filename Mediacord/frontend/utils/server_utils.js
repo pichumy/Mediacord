@@ -26,4 +26,5 @@ export const joinServer = (serverId) => {
     url: `api/servers/${serverId}/join_server`
   })
 }
+
 //TODO: getServer, updateServer, deleteServer

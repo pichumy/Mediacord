@@ -25,10 +25,12 @@ class SignUpForm extends React.Component {
   }
 
   componentWillReceiveProps(nextProps){
-    if(this.props.errors.general != nextProps.errors.general){
+    if(this.props.errors.general !== nextProps.errors.general){
       this.setState({
         error:{
-          general: nextProps.errors.general
+          general: nextProps.errors.general,
+          password: "",
+          username: ""
         }
       })
     }

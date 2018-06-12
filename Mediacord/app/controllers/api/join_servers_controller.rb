@@ -1,8 +1,9 @@
 class Api::JoinServersController < ApplicationController
   def create
-    @member = ServerMembership.new(user_id: current_user.id, server_id: params[:server_id]);
+    @user = current_user
+    @member = ServerMembership.new(user_id: @user.id, server_id: params[:server_id]);
     if @member.save
-      render json: "Success"
+      render '/api/users/show'
     else
       render @member.errors.full_messages, status: 422
     end
