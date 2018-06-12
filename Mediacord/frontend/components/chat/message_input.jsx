@@ -1,5 +1,5 @@
 import React from 'react';
-import Cable from 'actioncable';
+import ActionCable from 'actioncable';
 
 class MessageInput extends React.Component {
 
@@ -25,7 +25,8 @@ class MessageInput extends React.Component {
 
   createSocket() {
     // let cable = Cable.createConsumer('ws://localhost:3000/cable');
-    let cable = Cable.createConsumer('wss://mediacord.herokuapp.com/cable')
+    // let cable = Cable.createConsumer('wss://mediacord.herokuapp.com/cable');
+    let cable = ActionCable.createConsumer();
     let fetchMessages = this.props.fetchMessages;
     this.chats = cable.subscriptions.create({
       channel: 'ChatChannel'

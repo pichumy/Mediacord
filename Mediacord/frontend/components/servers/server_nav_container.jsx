@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import ServerNav from './server_nav';
-import { fetchServersForUser } from '../../actions/server_actions';
+import { fetchServers } from '../../actions/server_actions';
 import { openModal } from '../../actions/modal_actions';
 import { withRouter } from 'react-router-dom';
 
