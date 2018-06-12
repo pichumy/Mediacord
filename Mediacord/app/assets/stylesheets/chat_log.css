@@ -37,36 +37,17 @@
   width: 100%;
 }
 
-/* .button-container {
-  width: 25%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.message-button {
-  margin-bottom: 40px;
-  background-color: #4CAF50; /* Green */
-  border: none;
-  color: white;
-  padding: 5px 5px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  border-radius: 30%;
-} */
-
 .message-item-container {
   border-bottom: 1px solid hsla(0,0%,100%,.04);
   margin-left: 3px;
   margin-right: 2px;
+  height: 80px;
+  padding: 0 10px;
+  background: hsla(218,5%,47%,.3);
   user-select: text;
   word-wrap: break-word;
   box-sizing: border-box;
   flex-shrink: 0;
-  padding: 10px;
 }
 
 .message-author {

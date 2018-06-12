@@ -23,11 +23,17 @@ class ChatLog extends React.Component {
         <Loading />
       )
     }
-    let messageItems = this.props.messages.array.reverse().map(message => {
-      return (
-        <Messages message={message} key={message.id} userList={this.props.userList}/>
-      )
-    })
+    console.log(this.props.messages.array);
+    let messageItems = this.props.messages.array
+      .sort( (a, b) => {
+        return a.id - b.id;
+      })
+      .reverse()
+      .map(message => {
+        return (
+          <Messages message={message} key={message.id} userList={this.props.userList}/>
+        )
+      })
     return(
       <div className="chat-log">
         <div className="message-log">

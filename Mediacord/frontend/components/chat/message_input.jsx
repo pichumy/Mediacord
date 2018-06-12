@@ -65,6 +65,9 @@ class MessageInput extends React.Component {
           value={this.state.text}
           onChange={this.handleChange('text')}>
         </input>
+        <button
+          onClick={ (e) => this.handleSendEvent(e) }>
+        </button>
 
       </div>
     </form>

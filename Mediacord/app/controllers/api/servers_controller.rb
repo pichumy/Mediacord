@@ -3,14 +3,15 @@ class Api::ServersController < ApplicationController
   before_action :require_login
 
   def index
-    @servers = Server.all
+    @user = User.find_by(id: current_user.id)
+    @servers = @user.servers
     render :index
   end
 
   def show
     @server = Server.find(params[:id])
     @channels = @server.channels
-    @users = @server.users 
+    @users = @server.users
     render :show
   end
 
