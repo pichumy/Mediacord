@@ -1,11 +1,24 @@
 .home-icon {
   height: 50px;
   width: 50px;
-  background-image: url('friends.png');
+  /* background-image: url('friends.png');
   background-repeat: no-repeat;
   background-position: 50%;
   background-size: 50px 50px;
-  margin: 0 auto;
+  margin: 0 auto; */
+  align-items: center;
+  display: flex;
+}
+/* The icon thingy */
+.home-icon i {
+  font-size: 35px;
+  margin: 5px 2px;
+}
+
+.home-icon:hover {
+  border-radius: 40%;
+  background-color: #7289da;
+  transition-duration: 1s;
 }
 
 .sidebar{
@@ -17,6 +30,7 @@
   justify-content: flex-start;
   overflow: hidden;
   position: relative;
+  align-items: center;
   -webkit-box-direction: normal;
   -webkit-box-orient: vertical;
 }

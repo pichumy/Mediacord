@@ -55,6 +55,7 @@
   font-size: 1rem;
   color: white;
   font-weight: 500;
+  margin: 3px;
 }
 
 .message-text {
@@ -64,4 +65,10 @@
   font-weight: 500;
   height: auto;
   word-break: break-all;
+}
+
+.message-header {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
 }

@@ -7,7 +7,7 @@ import { fetchServerByName } from '../../actions/search_actions';
 
 const mapStateToProps = (state, ownProps) => ({
   servers: state.search.servers,
-  existingServers: state.entities.servers,
+  existingServers: Object.keys(state.entities.servers).map(idx => state.entities.servers[idx]),
   errors: state.errors.servers
 })
 

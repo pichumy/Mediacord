@@ -8,7 +8,7 @@ const sessionsReducer = (state = initialState, action) => {
   Object.freeze(state);
   switch (action.type){
       case RECEIVE_NEW_SESSION:
-        return Object.assign({}, {id: action.user.id});
+        return Object.assign({}, {id: action.user.id, avatar_url: action.user.avatar_url, username: action.user.username});
       case LOGOUT_USER:
         return initialState;
       default:

@@ -5,7 +5,9 @@ const HomeIcon = () => {
   return (
     <div className="sidebar-item">
       <Link to="/home">
-        <div className="home-icon"></div>
+        <div className="home-icon">
+          <i className="fa fa-users" aria-hidden="true"></i>
+        </div>
       </Link>
     </div>
   )

@@ -12,7 +12,8 @@
     <script type="text/javascript">
       window.currentUser = {
         "id": <%= current_user.id %>,
-        "username": "<%= current_user.username %>"
+        "username": "<%= current_user.username %>",
+        "avatar_url": "<%= asset_path current_user.avatar_url %>"
       }
     </script>
     <% end %>

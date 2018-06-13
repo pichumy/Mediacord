@@ -1,4 +1,5 @@
 import React from 'react';
+import Loading from '../loading';
 
 class ChannelSettingsBar extends React.Component {
 
@@ -29,11 +30,15 @@ class ChannelSettingsBar extends React.Component {
       classN = "gear-dropdown hidden";
     }
 
-
+    if(!this.props.server){
+      return(
+        <Loading />
+      )
+    }
     return(
       <div className="channel-settings-bar" onClick={this.handleClick}>
           <h1 className="server-name">
-            Server Name Goes here
+            {this.props.server.name}
           </h1>
           <span className="V"> V </span>
           <div className={classN}>

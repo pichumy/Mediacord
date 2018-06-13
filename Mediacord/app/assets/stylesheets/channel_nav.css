@@ -14,6 +14,8 @@
   -webkit-box-align: center;
   align-items: center;
   background: rgba(32,34,37,.3);
+  display: flex;
+  flex-wrap: nowrap;
 }
 
 .channel-settings-bar {
@@ -27,6 +29,7 @@
   font-weight: 500;
   height: 48px;
   padding: 0 12px 0 16px;
+  font-family: Helvetica;
   z-index: 3;
   display: flex;
   justify-content: space-between;
@@ -95,4 +98,16 @@
     margin: 1px 0 1px 8px;
     overflow: hidden;
     padding: 0 8px;
+}
+
+.avatar-image {
+  height: 30px;
+  width: 30px;
+}
+
+#username {
+  font-family: Helvetica;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 5px;
 }

@@ -5,7 +5,7 @@ import { openModal } from '../../actions/modal_actions';
 import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = (state, ownProps) => ({
-  servers: state.entities.servers
+  servers: Object.keys(state.entities.servers).map(idx => state.entities.servers[idx])
 });
 
 const mapDispatchToProps = dispatch => ({
