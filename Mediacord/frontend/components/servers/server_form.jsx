@@ -11,6 +11,7 @@ class ServerForm extends React.Component {
     }
     this.handleClick = this.handleClick.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleSearchClick = this.handleSearchClick.bind(this);
   }
 
   componentDidMount(){
@@ -23,6 +24,16 @@ class ServerForm extends React.Component {
         form: type,
         errors: ""
       })
+    }
+  }
+
+  handleSearchClick(value){
+    return (e) => {
+      this.setState({
+        name: value,
+        errors: ""
+      });
+      this.props.fetchServerByName(value.toLowerCase())
     }
   }
 
@@ -62,7 +73,7 @@ class ServerForm extends React.Component {
         })
       }else{
         let server = this.props.servers[0];
-        this.props.joinServer(server.id);
+        this.props.joinServer(server.id, this.props.userId);
       }
 
     }
@@ -102,7 +113,8 @@ class ServerForm extends React.Component {
     // join
     if(this.state.form === "Join"){
       let serverIds = this.props.existingServers.map(server => {
-        return server.id;
+        if(server.private === false)
+          return server.id;
       });
       let servers = this.props.servers.filter(server => !serverIds.includes(server.id))
       return(
@@ -121,7 +133,7 @@ class ServerForm extends React.Component {
                 onChange={this.update('name')}>
               </input>
             </label>
-            <SearchBox array={servers}/>
+            <SearchBox array={servers} action={this.handleSearchClick}/>
             <button onClick={this.handleSubmit}
               className="submit-button add-margin">
             Submit

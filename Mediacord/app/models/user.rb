@@ -15,7 +15,11 @@ class User < ApplicationRecord
 
   has_many :owned_servers,
   foreign_key: :owner_id,
-  class_name: :Server 
+  class_name: :Server
+
+  has_many :channels,
+  through: :servers,
+  source: :channels
 
   def ensure_session_token
     self.session_token ||= SecureRandom::urlsafe_base64(16)

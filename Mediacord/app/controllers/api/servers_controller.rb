@@ -36,16 +36,9 @@ class Api::ServersController < ApplicationController
   end
 
   def private_servers
-    # I actually need to return the users? channels for each of the private
-    # servers for the front end...
     @user = current_user
     @servers = @user.servers.reject { |server| server.private == false }
-    # @channels = @servers.map(&:channels).flatten
-    # @users = @servers.map(&:users).flatten
-    # @data = []
-    # @channel.each_with_index do |channel, idx|
-    #   @data.push(channel: channel, user: @users[idx])
-    # end
+    # @servers.includes(:users, :channels)
     render :private
   end
 

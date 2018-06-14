@@ -10,7 +10,7 @@ class PrivateChatNav extends React.Component {
     if(this.props.match.params.channel_id){
       return(
         <div className="main-nav">
-          <div className="nav-bar">
+          <div className="private-nav-bar">
             <button className="btn" onClick={this.props.openModal}> Invite </button>
           </div>
           <ChatLog />
@@ -25,6 +25,10 @@ class PrivateChatNav extends React.Component {
     )
   }
 }
+
+const mapStateToProps = (state, ownProps) => ({
+  channel: state.entities.channels[ownProps.match.params.channel_id]
+})
 
 const mapDispatchToProps = dispatch => ({
   openModal: () => dispatch(openModal("Invite")),

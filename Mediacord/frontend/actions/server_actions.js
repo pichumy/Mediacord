@@ -55,6 +55,7 @@ export const createServer = (serverData) => dispatch => {
       postChannel({name: "General", server_id: data.server.id});
       APIUtils.joinServer(data.server.id);
       dispatch(receiveServer(data.server));
+      dispatch(closeModal());
     }, error => dispatch(receiveErrors(error)))
 }
 
@@ -63,9 +64,9 @@ export const fetchUserList = (serverId) => dispatch => {
     .then((users) => dispatch(receiveUserList(users)))
 }
 
-export const joinServer = (serverId, userId = nil) => dispatch => {
+export const joinServer = (serverId, userId) => dispatch => {
   return APIUtils.joinServer(serverId, userId)
-    .then(() => dispatch(fetchServers()), (error) => dispatch(receiveError('server', error)))
+    .then(() => dispatch(fetchServers()), (error) => dispatch(receiveErrors('server', error)))
     .then(() => dispatch(closeModal()))
 }
 
@@ -87,6 +88,6 @@ export const createPrivateServer = (name, user_id) => dispatch => {
 
 export const joinPrivateServer = (serverId, userId = nil) => dispatch => {
   return APIUtils.joinServer(serverId, userId)
-    .then((user) => dispatch(receiveUser(user)), (error) => dispatch(receiveError('server', error)))
+    .then((user) => dispatch(receiveUser(user)), (error) => dispatch(receiveErrors('server', error)))
     .then(() => dispatch(closeModal()))
 }

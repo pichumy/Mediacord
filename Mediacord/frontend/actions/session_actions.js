@@ -29,7 +29,10 @@ const receiveNewUser = (user) => (
   }
 );
 
-
+export const updateUser = (userData) => dispatch => {
+  return APIUtils.patchUser(userData)
+    .then(user => dispatch(receiveNewUser()))
+}
 
 export const createNewSession = userForm => dispatch => {
   dispatch(startLoading());

@@ -88,6 +88,20 @@ class SignUpForm extends React.Component {
         </div>
       )
     }
+    // In order to make the button not exist on the page
+    // or else enter will hit the button!
+    let button = "";
+    if(this.props.formType === "Login"){
+      button =
+      <button onClick={this.handleClick}>
+        <div className="forgot-password">
+          <div className="link-color">
+            {this.props.forgotPassword}
+          </div>
+          {this.state.sorry}
+        </div>
+      </button>;
+    }
     return (
     <div className="background">
       <Logo />
@@ -112,14 +126,7 @@ class SignUpForm extends React.Component {
                 onChange={this.handleInput('password')}
                 value={this.state.password}>
               </input>
-              <button onClick={this.handleClick}>
-                <div className="forgot-password">
-                  <div className="link-color">
-                    {this.props.forgotPassword}
-                  </div>
-                  {this.state.sorry}
-                </div>
-              </button>
+              {button}
 
               <button className="submit-button" onClick={this.handleSubmit}><div className="button-content">{this.props.formType}</div></button>
               <div className="flex">

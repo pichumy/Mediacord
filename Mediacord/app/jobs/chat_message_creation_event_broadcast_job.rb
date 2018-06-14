@@ -1,11 +1,8 @@
 class ChatMessageCreationEventBroadcastJob < ApplicationJob
   queue_as :default
-  def perform(chat_message)
+  def perform(message)
     ActionCable
       .server
-      .broadcast('chat_channel',
-                id: chat_message.id,
-                created_at: chat_message.created_at.strftime('%H:%M'),
-                content: chat_message.text)
+      .broadcast("chat_#{message.channel_id}", command: "new_message")
   end
 end

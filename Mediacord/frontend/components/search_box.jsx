@@ -4,8 +4,6 @@ class SearchBox extends React.Component{
   constructor(props){
     super(props);
   }
-
-
   render(){
 
       const { array } = this.props;
@@ -23,7 +21,7 @@ class SearchBox extends React.Component{
 
       sortedItems = sortedItems.map(item => {
         return(
-              <div key={item.id} className="search-box-item">
+              <div onClick={this.props.action(item[attr])} key={item.id} className="search-box-item">
                 {item[attr]}
               </div>
         )

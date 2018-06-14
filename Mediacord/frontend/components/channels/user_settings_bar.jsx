@@ -13,6 +13,7 @@ class UserSettingsBar extends React.Component {
       )
     }
     // TODO: Small refactor to no longer store so much information in session
+    console.log(user);
     return(
       <div className="user-settings-bar">
         <div className="avatar-image">

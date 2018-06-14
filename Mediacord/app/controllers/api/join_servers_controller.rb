@@ -1,8 +1,5 @@
 class Api::JoinServersController < ApplicationController
   def create
-    p '------------'
-    p params
-    p '------------'
     if params[:id]
       @user = User.find(params[:id])
     else
@@ -10,6 +7,8 @@ class Api::JoinServersController < ApplicationController
     end
     @member = ServerMembership.new(user_id: @user.id, server_id: params[:server_id]);
     if @member.save
+      # server = Server.find(params[:server_id])
+      # JoinServerEventBroadcastJob.perform_later(server)
       render '/api/users/show'
     else
       render @member.errors.full_messages, status: 422

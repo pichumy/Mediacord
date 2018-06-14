@@ -42,7 +42,6 @@ class ChannelNav extends React.Component{
     const channels = Object.values(this.props.channels).map( (channel) => {
       return <Channel channel={channel} key={channel.id}/>
     });
-
     return (
       <div className="channel-nav">
         <ChannelSettingsBar />

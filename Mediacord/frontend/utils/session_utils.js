@@ -9,7 +9,7 @@ export const postUser = (user) => {
 export const patchUser = (user) => {
   return $.ajax( {
     method: 'PATCH',
-    url: `/api/users/#{user.id}`,
+    url: `/api/users/${user.id}`,
     data: { user }
   })
 }

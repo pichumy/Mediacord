@@ -10,17 +10,28 @@ class UserSearch extends React.Component {
       name: "",
     }
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   update(type){
-    return (e) => {
+    return(e) => {
       this.setState({
         [type]: e.target.value,
         errors: ""
       });
-       if( e.target.value.length > 0){
-         this.props.fetchUserByName((e.target.value).toLowerCase());
-       }
+      if( e.target.value.length > 0){
+        this.props.fetchUserByName((e.target.value).toLowerCase());
+      }
+    }
+  }
+
+  handleClick(value){
+    return (e) => {
+      this.setState({
+        name: value,
+        errors: ""
+      });
+      this.props.fetchUserByName(value.toLowerCase());
     }
   }
 
@@ -31,7 +42,7 @@ class UserSearch extends React.Component {
         this.setState({
           errors: "No such user found!"
         })
-      }else if(this.props.type === "Create"){
+      }else if(this.props.type == "Create"){
         let username = this.props.users[0].username;
         let id = this.props.users[0].id;
         let channel = this.props.channels.filter(channel => channel.name === username);
@@ -70,7 +81,7 @@ class UserSearch extends React.Component {
                 onChange={this.update('name')}>
               </input>
             </label>
-            <SearchBox array={users}/>
+            <SearchBox array={users} action={this.handleClick}/>
             <button onClick={this.handleSubmit}
               className="submit-button add-margin">
             Submit

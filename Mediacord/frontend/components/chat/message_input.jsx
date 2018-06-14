@@ -32,18 +32,24 @@ class MessageInput extends React.Component {
     // let cable = Cable.createConsumer('wss://mediacord.herokuapp.com/cable');
     let cable = ActionCable.createConsumer();
     this.cable = cable;
-    let fetchMessages = this.props.fetchMessages;
     this.chats = cable.subscriptions.create({
-      channel: 'ChatChannel'
+      channel: 'ChatChannel',
+      id: `${this.props.channelId}`
     }, {
       connected: () => {
       },
-      received: (data) => {
-        if(data.id){
-          fetchMessages(this.props.channelId);
-          // if(this.props.private_channel && this.props.messages.array.length === 0){
-          //   this.props.joinServer(this.props.serverId, this.props.private_channel.user_id);
-          // }
+      received: ({ command }) => {
+        // 0 = new message
+        // 1 = update user
+        switch(command){
+          case "new_message":
+            this.props.fetchMessages(this.props.channelId);
+            break;
+          case "update_users":
+            this.props.fetchUserList(this.props.serverId);
+            break;
+          default:
+            console.log("Invalid command", command);
         }
       },
       create: function(text, channelId, userId) {
@@ -54,14 +60,14 @@ class MessageInput extends React.Component {
         });
       },
       disconnected: () => {
-        console.log("Disconnect");
+        
       }
     });
   }
 
   handleSendEvent(e){
     e.preventDefault();
-    this.chats.create(this.state.text, this.props.channelId, this.props.userId);
+    this.chats.create(this.state.text, this.props.channelId, this.props.current_user.id);
     // reset
     this.setState({
       text: ''

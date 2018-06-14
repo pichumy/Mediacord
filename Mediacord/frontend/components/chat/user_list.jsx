@@ -1,5 +1,8 @@
 import React from 'react';
 import Loading from '../loading';
+import UserItem from './user_item';
+import ActionCable from 'actioncable';
+
 class UserList extends React.Component {
 
   componentDidMount(){
@@ -12,39 +15,26 @@ class UserList extends React.Component {
     }
   }
 
+
   render(){
     if(this.props.users.length === 0){
       return (
         <Loading />
       )
     }
+    let online = this.props.onlineUsers.map(user => {
+      return <UserItem user={user} key={user.id} />
+    });
+    let offline = this.props.offlineUsers.map(user => {
+      return <UserItem user={user} key={user.id} />
+    });
+
     return(
       <div className="user-list">
-        <div className="user-header">Users</div>
-        {
-          Object.values(this.props.users).map(user => {
-            let styles = {
-              img: {
-                backgroundImage: `url('${user.avatar_url}')`,
-                backgroundRepeat: 'no-repeat',
-                backgroundPosition: '50%',
-                backgroundSize: "50px 50px",
-                overflow: 'hidden',
-                borderRadius: '50%',
-                height: '36px',
-                width: '36px',
-                padding: '8px',
-                alignItems: 'center'
-              }
-            }
-            return (
-              <div key={user.id} className="userlist-item">
-                <div style={styles.img}></div>
-                <div className="username">{user.username}</div>
-              </div>
-            )
-          })
-        }
+        <div className="user-header">Online—{online.length}</div>
+        { online }
+        <div className="user-header">Offline—{offline.length}</div>
+        { offline }
       </div>
     )
   }
