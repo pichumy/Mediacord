@@ -21,10 +21,13 @@ class UserSettingsBar extends React.Component {
         <div id="username" className="username">
           {user.username}
         </div>
-        <button
-          onClick={this.props.signOut}>
-          Temporary Sign Out
-        </button>
+        <div className="button-container">
+          <button
+            className="btn"
+            onClick={this.props.signOut}>
+            Sign Out
+          </button>
+        </div>
       </div>
     )
   }

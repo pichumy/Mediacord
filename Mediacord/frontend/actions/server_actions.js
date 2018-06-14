@@ -39,11 +39,10 @@ const receivePrivateServer = (server) => {
   )
 }
 
-// dont need to do this
-// const receiveUser = (user) => ({
-//   type: RECEIVE_JOINED_USER,
-//   user
-// })
+const receiveUser = (user) => ({
+  type: RECEIVE_JOINED_USER,
+  user
+})
 
 export const fetchServers = () => dispatch => {
   return APIUtils.getServers()
@@ -86,8 +85,8 @@ export const createPrivateServer = (name, user_id) => dispatch => {
     }, error => dispatch(receiveErrors(error)))
 }
 
-export const joinPrivateServer = (serverId) => dispatch => {
-  return APIUtils.joinServer(serverId)
-    .then(() => dispatch(fetchPrivateChannels()), (error) => dispatch(receiveError('server', error)))
+export const joinPrivateServer = (serverId, userId = nil) => dispatch => {
+  return APIUtils.joinServer(serverId, userId)
+    .then((user) => dispatch(receiveUser(user)), (error) => dispatch(receiveError('server', error)))
     .then(() => dispatch(closeModal()))
 }

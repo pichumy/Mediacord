@@ -11,7 +11,6 @@ const userListReducer = (state = initialState, action) => {
       })
       return Object.assign({}, newObject);
     case RECEIVE_JOINED_USER:
-      console.log(action);
       return Object.assign({}, state, {[action.user.id]: action.user});
     default:
       return state;

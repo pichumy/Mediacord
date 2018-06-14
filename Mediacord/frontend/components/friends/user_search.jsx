@@ -1,5 +1,6 @@
 import React from 'react'
 import SearchBox from '../search_box';
+import { matchPath } from 'react-router';
 
 class UserSearch extends React.Component {
 
@@ -30,7 +31,7 @@ class UserSearch extends React.Component {
         this.setState({
           errors: "No such user found!"
         })
-      }else{
+      }else if(this.props.type === "Create"){
         let username = this.props.users[0].username;
         let id = this.props.users[0].id;
         let channel = this.props.channels.filter(channel => channel.name === username);
@@ -41,6 +42,14 @@ class UserSearch extends React.Component {
         }else {
           this.props.createPrivateServer(username, id);
         }
+      }else if(this.props.type === "Join"){
+        let id = this.props.users[0].id;
+        const match = matchPath(this.props.location.pathname, {
+          path: '/home/:id',
+        })
+        let server_id = match.params.id;
+        this.props.joinPrivateServer(server_id, id);
+        this.props.closeModal();
       }
   }
 
@@ -52,6 +61,7 @@ class UserSearch extends React.Component {
       <div className="form-container">
         <div className="session-form" onClick={e => e.stopPropagation()}>
           <div className="centeringWrapper">
+            <h1> {this.props.text} </h1>
             <label className="title add-margin"> User Name
               <input
                 className="input-default add-margin"
