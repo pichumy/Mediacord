@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Loading from '../loading';
+import { logoutSession} from '../../actions/session_actions';
 
 class UserSettingsBar extends React.Component {
 
@@ -11,7 +12,7 @@ class UserSettingsBar extends React.Component {
         <Loading />
       )
     }
-    console.log(this.props);
+    // TODO: Small refactor to no longer store so much information in session
     return(
       <div className="user-settings-bar">
         <div className="avatar-image">
@@ -33,4 +34,8 @@ const mapStateToProps = (state, ownProps) => ({
   user: state.session
 })
 
-export default connect(mapStateToProps)(UserSettingsBar);
+const mapDispatchToProps = dispatch => ({
+  signOut: () => dispatch(logoutSession())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserSettingsBar);

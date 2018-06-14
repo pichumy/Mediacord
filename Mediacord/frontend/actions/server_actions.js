@@ -6,7 +6,8 @@ export const RECEIVE_SERVER = "RECEIVE_SERVER";
 export const RECEIVE_SERVERS = "RECEIVE_SERVERS";
 export const RECEIVE_USER_LIST = "RECEIVE_USER_LIST";
 export const RECEIVE_JOINED_USER = "RECEIVE_JOINED_USER";
-
+export const RECEIVE_PRIVATE_SERVERS = "RECEIVE_PRIVATE_SERVERS";
+export const RECEIVE_PRIVATE_SERVER = "RECEIVE_PRIVATE_SERVER";
 
 const receiveServer = (server) => {
   return (
@@ -23,6 +24,18 @@ const receiveServers = (servers) => {
 const receiveUserList = (users) => {
   return (
     { type: RECEIVE_USER_LIST, users }
+  )
+}
+
+const receivePrivateServers = (channels) => {
+  return (
+    { type: RECEIVE_PRIVATE_SERVERS, channels }
+  )
+}
+
+const receivePrivateServer = (server) => {
+  return (
+    { type: RECEIVE_PRIVATE_SERVER, server}
   )
 }
 
@@ -51,8 +64,30 @@ export const fetchUserList = (serverId) => dispatch => {
     .then((users) => dispatch(receiveUserList(users)))
 }
 
-export const joinServer = (serverId) => dispatch => {
-  return APIUtils.joinServer(serverId)
+export const joinServer = (serverId, userId = nil) => dispatch => {
+  return APIUtils.joinServer(serverId, userId)
     .then(() => dispatch(fetchServers()), (error) => dispatch(receiveError('server', error)))
+    .then(() => dispatch(closeModal()))
+}
+
+export const fetchPrivateChannels = () => dispatch => {
+  return APIUtils.getPrivateServers()
+    .then(channels => dispatch(receivePrivateServers(channels)))
+}
+
+export const createPrivateServer = (name, user_id) => dispatch => {
+  return APIUtils.postServer({name: name, private: true})
+    .then((data) => {
+      APIUtils.joinServer(data.server.id, user_id);
+      APIUtils.joinServer(data.server.id);
+      dispatch(closeModal())
+      postChannel({name: name, server_id: data.server.id})
+        .then(() => dispatch(fetchPrivateChannels()))
+    }, error => dispatch(receiveErrors(error)))
+}
+
+export const joinPrivateServer = (serverId) => dispatch => {
+  return APIUtils.joinServer(serverId)
+    .then(() => dispatch(fetchPrivateChannels()), (error) => dispatch(receiveError('server', error)))
     .then(() => dispatch(closeModal()))
 }

@@ -3,7 +3,7 @@ import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 import CreateChannelContainer from '../channels/create_channel_container';
 import ServerFormContainer from '../servers/server_form_container';
-
+import UserSearch from '../friends/user_search_container';
 
 function Modal({modal, closeModal}){
   if (!modal){
@@ -17,6 +17,9 @@ function Modal({modal, closeModal}){
     case 'Server':
       component = <ServerFormContainer />;
       break;
+    case 'Users':
+      component = <UserSearch />
+      break; 
     default:
       return null;
   }

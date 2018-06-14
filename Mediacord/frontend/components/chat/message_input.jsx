@@ -35,6 +35,9 @@ class MessageInput extends React.Component {
       received: (data) => {
         if(data.id){
           fetchMessages(this.props.channelId);
+          // if(this.props.private_channel && this.props.messages.array.length === 0){
+          //   this.props.joinServer(this.props.serverId, this.props.private_channel.user_id);
+          // }
         }
       },
       create: function(text, channelId, userId) {

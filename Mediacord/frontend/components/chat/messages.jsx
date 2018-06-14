@@ -1,9 +1,13 @@
 import React from 'react';
+import Loading from '../loading';
 
 const Message = ({ message, userList }) => {
   let user = userList[message.user_id];
-
-  console.log()
+  if (!user){
+    return(
+      <Loading />
+    )
+  }
   return (
     <div className="message-item-container">
       <div className="message-header">

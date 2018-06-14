@@ -19,10 +19,10 @@ user2.save!
 user3.save!
 demo.save!
 
-poi = Server.new(name: "Person of Interest", avatar_url: "poi.jpg");
+poi = Server.new(name: "Person of Interest", avatar_url: "poi.jpg", owner_id: demo.id);
 poi.save!
 
-gb = Server.new(name: "Grand Blue", avatar_url: "grandblue.png");
+gb = Server.new(name: "Grand Blue", avatar_url: "grandblue.png", owner_id: demo.id);
 gb.save!
 
 ServerMembership.create!(user_id: demo.id, server_id: poi.id);

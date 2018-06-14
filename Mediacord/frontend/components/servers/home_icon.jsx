@@ -1,11 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
-const HomeIcon = () => {
+const HomeIcon = (props) => {
+  let icon = "home-icon";
+  if(props.match.path.substr(0,5) === "/home"){
+    icon = "home-icon highlight";
+  }
   return (
     <div className="sidebar-item">
       <Link to="/home">
-        <div className="home-icon">
+        <div className={icon}>
           <i className="fa fa-users" aria-hidden="true"></i>
         </div>
       </Link>
@@ -13,4 +17,4 @@ const HomeIcon = () => {
   )
 }
 
-export default HomeIcon;
+export default withRouter(HomeIcon);

@@ -7,19 +7,20 @@ class SearchBox extends React.Component{
 
 
   render(){
-      console.log(this.props);
+
       const { array } = this.props;
       if (array.length <= 0){
         return null;
       }
       let attr = "name";
-      if (Object.values(array[0]).includes('username')){
+      if (Object.keys(Object.values(array)[0]).includes('username')){
         attr = "username"
       }
+      let sortedItems = [...array];
+      sortedItems.sort( (a, b) => {
+          return a[attr].length - b[attr].length;
+        })
 
-      let sortedItems = array.sort( (a, b) => {
-        return a[attr].length - b[attr].length;
-      })
       sortedItems = sortedItems.map(item => {
         return(
               <div key={item.id} className="search-box-item">

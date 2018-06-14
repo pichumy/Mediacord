@@ -20,10 +20,25 @@ export const getUserList = (serverId) => {
   })
 }
 
-export const joinServer = (serverId) => {
+export const joinServer = (serverId, userId) => {
+  if(userId){
+    return $.ajax({
+      method: "POST",
+      url: `api/servers/${serverId}/join_server`,
+      data: {id: userId}
+    })
+  }
   return $.ajax({
     method: "POST",
     url: `api/servers/${serverId}/join_server`
+  })
+}
+
+
+export const getPrivateServers = () => {
+  return $.ajax({
+    method: "GET",
+    url: "api/searches/private",
   })
 }
 

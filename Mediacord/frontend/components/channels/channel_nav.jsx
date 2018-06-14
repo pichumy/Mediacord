@@ -8,11 +8,6 @@ class ChannelNav extends React.Component{
 
   constructor(props){
     super(props);
-    let channel;
-    this.state = {
-      selectedChannel: 0
-    }
-    this.switchChannel = this.switchChannel.bind(this);
   }
 
   componentDidMount(){
@@ -31,20 +26,12 @@ class ChannelNav extends React.Component{
       nextProps.fetchChannels(nextProps.match.params.id);
     }
     else if(Object.keys(nextProps.channels).length > 0){
-      let channel_id;
       if(!nextProps.match.params.channel_id){
         let idx = Object.keys(nextProps.channels)[0];
-        channel_id = nextProps.channels[idx].id
-        let correct_url = `/servers/${nextProps.match.params.id}/channels/${channel_id}`;
+        let correct_url = `/servers/${nextProps.match.params.id}/channels/${nextProps.channels[idx].id}`;
         this.props.history.push(correct_url);
-      }else{
-        channel_id = nextProps.match.params.channel_id;
       }
-      this.setState({
-        selectedChannel: channel_id
-      })
     }
-
   }
 
   render(){
@@ -53,7 +40,7 @@ class ChannelNav extends React.Component{
     //   <Loading />
     // }
     const channels = Object.values(this.props.channels).map( (channel) => {
-      return <Channel channel={channel} key={channel.id} selectedChannel={this.state.selectedChannel} switchChannel={this.switchChannel}/>
+      return <Channel channel={channel} key={channel.id}/>
     });
 
     return (
@@ -62,7 +49,7 @@ class ChannelNav extends React.Component{
         <div className="channels">
           {channels}
         </div>
-        <UserSettingsBar signOut={this.props.signOut}/>
+        <UserSettingsBar />
       </div>
     )
   }

@@ -12,6 +12,7 @@ const App = () => (
     <Modal />
     <Switch>
       <ProtectedRoute exact path="/home" component={HomeContainer} />
+      <ProtectedRoute exact path="/home/:id/:channel_id" component={HomeContainer} />
       <ProtectedRoute path="/servers/:id/channels/:channel_id" component={ServerMainContainer} />
       <ProtectedRoute path="/servers/:id" component={ServerMainContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />

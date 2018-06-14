@@ -12,8 +12,7 @@ const ChannelReducer = (state = initialState, action) => {
       action.channels.map(channel => {
         newObject[channel.id] = channel;
       })
-      // return Object.assign({}, state, newObject); // I want to get rid of channels
-      return Object.assign({}, newObject);
+      return newObject;
     default:
       return state;
   }

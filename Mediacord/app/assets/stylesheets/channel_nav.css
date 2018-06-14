@@ -42,6 +42,7 @@
   flex: 1;
   -webkit-box-flex: 1;
   flex-direction: column;
+  overflow: scroll;
 }
 
 .server-name {

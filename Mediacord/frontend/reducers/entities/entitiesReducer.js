@@ -1,14 +1,16 @@
-import usersReducer from './usersReducer';
-import serversReducer from './serversReducer';
-import channelsReducer from './channelsReducer';
+import users from './usersReducer';
+import servers from './serversReducer';
+import channels from './channelsReducer';
 import messages from './messagesReducer';
 import { combineReducers } from 'redux';
-import userListReducer from './userListsReducer';
+import userList from './userListsReducer';
+import private_channels from './privateMessageServerReducer';
 
 export default combineReducers({
-    users: usersReducer,
-    servers: serversReducer,
-    channels: channelsReducer,
-    userList: userListReducer,
-    messages
+    users,
+    servers,
+    channels,
+    userList,
+    messages,
+    private_channels
 });

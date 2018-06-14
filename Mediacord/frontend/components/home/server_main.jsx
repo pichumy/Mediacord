@@ -19,9 +19,7 @@ class ServerMain extends React.Component {
     return(
       <div className="home">
         <ServerNav />
-        <ChannelNav
-          signOut={this.props.signOut}
-          />
+        <ChannelNav />
         <Nav />
       </div>
     )

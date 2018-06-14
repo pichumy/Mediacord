@@ -14,6 +14,7 @@ const receiveUsers = (users) => {
   )
 }
 
+
 export const fetchServerByName = (name) => dispatch => {
   return APIUtil.getServers(name)
     .then(servers => dispatch(receiveServers(servers)))

@@ -16,7 +16,8 @@ Rails.application.routes.draw do
     resources :messages, only: [:show, :create]
 
     get '/searches/servers', to: 'searches#servers'
-    get '/searches/users', to: 'searches/#users'
+    get '/searches/users', to: 'searches#users'
+    get '/searches/private', to: 'servers#private_servers'
   end
 
   root to: 'static_pages#root'

@@ -1,11 +1,6 @@
 .home-icon {
   height: 50px;
   width: 50px;
-  /* background-image: url('friends.png');
-  background-repeat: no-repeat;
-  background-position: 50%;
-  background-size: 50px 50px;
-  margin: 0 auto; */
   align-items: center;
   display: flex;
 }
@@ -13,6 +8,11 @@
 .home-icon i {
   font-size: 35px;
   margin: 5px 2px;
+}
+
+.highlight {
+  border-radius: 40%;
+  background-color: #7289da;
 }
 
 .home-icon:hover {

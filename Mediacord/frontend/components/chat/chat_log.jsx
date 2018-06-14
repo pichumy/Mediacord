@@ -1,5 +1,5 @@
 import React from 'react';
-import MessageInput from './message_input';
+import MessageInput from './message_input_container';
 import Messages from './messages';
 import Loading from '../loading';
 
@@ -38,7 +38,10 @@ class ChatLog extends React.Component {
         <div className="message-log">
           {messageItems}
         </div>
-        <MessageInput channelId={this.props.channelId} userId={this.props.current_user} fetchMessages={this.props.fetchMessages}/>
+        <MessageInput
+          channelId={this.props.channelId}
+          userId={this.props.current_user}
+          fetchMessages={this.props.fetchMessages}/>
       </div>
     )
   }

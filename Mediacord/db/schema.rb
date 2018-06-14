@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180608185217) do
+ActiveRecord::Schema.define(version: 20180613173424) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,17 @@ ActiveRecord::Schema.define(version: 20180608185217) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["server_id", "name"], name: "index_channels_on_server_id_and_name", unique: true
+  end
+
+  create_table "friends", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "friend_id", null: false
+    t.boolean "accepted", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["accepted"], name: "index_friends_on_accepted"
+    t.index ["friend_id", "user_id"], name: "index_friends_on_friend_id_and_user_id", unique: true
+    t.index ["user_id"], name: "index_friends_on_user_id"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -47,6 +58,7 @@ ActiveRecord::Schema.define(version: 20180608185217) do
     t.boolean "private", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "owner_id"
     t.index ["avatar_url"], name: "index_servers_on_avatar_url"
     t.index ["name"], name: "index_servers_on_name"
   end
