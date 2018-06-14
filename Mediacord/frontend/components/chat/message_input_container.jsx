@@ -6,10 +6,10 @@ import { joinServer } from '../../actions/server_actions';
 
 const mapStateToProps = (state, ownProps) => ({
   channelId: ownProps.match.params.channel_id,
-  current_user: state.session.id,
+  userId: state.session.id,
   private_channel: state.entities.private_channels[ownProps.match.params.channel_id],
   messages: state.entities.messages,
-  serverId: ownProps.match.params.id 
+  serverId: ownProps.match.params.id
 })
 
 const mapDispatchToProps = dispatch => ({
