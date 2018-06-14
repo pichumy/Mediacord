@@ -13,8 +13,8 @@ const App = () => (
     <Switch>
       <ProtectedRoute exact path="/home" component={HomeContainer} />
       <ProtectedRoute exact path="/home/:id/:channel_id" component={HomeContainer} />
-      <ProtectedRoute path="/servers/:id/channels/:channel_id" component={ServerMainContainer} />
-      <ProtectedRoute path="/servers/:id" component={ServerMainContainer} />
+      <ProtectedRoute exact path="/servers/:id/channels/:channel_id" component={ServerMainContainer} />
+      <ProtectedRoute exact path="/servers/:id" component={ServerMainContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
       <AuthRoute exact path="/" component={LoginFormContainer} />
       <Redirect to="/" />

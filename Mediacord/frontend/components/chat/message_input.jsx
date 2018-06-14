@@ -23,15 +23,21 @@ class MessageInput extends React.Component {
     }
   }
 
+  componentWillUnmount(){
+    this.cable.disconnect();
+  }
+
   createSocket() {
     // let cable = Cable.createConsumer('ws://localhost:3000/cable');
     // let cable = Cable.createConsumer('wss://mediacord.herokuapp.com/cable');
     let cable = ActionCable.createConsumer();
+    this.cable = cable;
     let fetchMessages = this.props.fetchMessages;
     this.chats = cable.subscriptions.create({
       channel: 'ChatChannel'
     }, {
-      connected: () => {},
+      connected: () => {
+      },
       received: (data) => {
         if(data.id){
           fetchMessages(this.props.channelId);
@@ -46,6 +52,9 @@ class MessageInput extends React.Component {
           channel_id: channelId,
           user_id: userId
         });
+      },
+      disconnected: () => {
+        console.log("Disconnect");
       }
     });
   }
