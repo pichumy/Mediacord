@@ -65,7 +65,13 @@ class ServerForm extends React.Component {
     e.stopPropagation();
     e.preventDefault();
     if(this.state.form === "Create"){
-      this.props.createServer({name: this.state.name});
+      if(this.state.name.length === 0){
+        this.setState({
+          errors: "Server name can't be blank!"
+        })
+      }else{
+        this.props.createServer({name: this.state.name});
+      }
     }else if(this.state.form === "Join"){
       if(!this.props.servers || !this.props.servers[0]){
         this.setState({
