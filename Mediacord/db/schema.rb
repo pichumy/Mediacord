@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20180613173424) do
     t.text "text", null: false
     t.integer "channel_id", null: false
     t.integer "user_id", null: false
+    t.boolean "image", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["channel_id"], name: "index_messages_on_channel_id"
@@ -64,10 +65,10 @@ ActiveRecord::Schema.define(version: 20180613173424) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "username", null: fals
+    t.string "username", null: false
     t.string "password_digest", null: false
     t.string "session_token", null: false
-    t.string "avatar_url", default: "discord-logo.png"
+    t.string "avatar_url", default: "https://res.cloudinary.com/djvxjp2tv/image/upload/v1529079794/discord-logo.png"
     t.boolean "offline", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

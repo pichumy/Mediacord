@@ -32,7 +32,6 @@ class UserSettingsBar extends React.Component {
     if(this.state.state){
       classN = "settings-dropup hidden";
     }
-    console.log(user);
     return(
       <div className="user-settings-bar">
         <div className="avatar">

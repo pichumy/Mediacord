@@ -8,6 +8,11 @@ const Message = ({ message, userList }) => {
       <Loading />
     )
   }
+  let content = message.text;
+  if(message.image){
+    // content = cloudinary.image(message.text, {width: 300, height: 100, crop: "scale"})
+    content = <img src={message.text}></img>
+  }
   return (
     <div>
       <div className="message-group">
@@ -25,7 +30,7 @@ const Message = ({ message, userList }) => {
           </h2>
           <div className="message-text">
             <div className="markup">
-              {message.text}
+              {content}
             </div>
           </div>
         </div>

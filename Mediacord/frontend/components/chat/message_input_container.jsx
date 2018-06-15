@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import MessageInput from './message_input';
 import { withRouter } from 'react-router-dom';
-import { receiveMessage } from '../../actions/message_actions';
+import { receiveMessage, createMessage } from '../../actions/message_actions';
 import { joinServer, fetchUserList } from '../../actions/server_actions';
 import { updateUser } from '../../actions/session_actions';
 
@@ -16,7 +16,8 @@ const mapStateToProps = (state, ownProps) => ({
 const mapDispatchToProps = dispatch => ({
   joinServer: (serverId, userId) => dispatch(joinServer(serverId, userId)),
   fetchUserList: (serverId) => dispatch(fetchUserList(serverId)),
-  receiveMessage: (message) => dispatch(receiveMessage(message))
+  receiveMessage: (message) => dispatch(receiveMessage(message)),
+  createMessage: (message) => dispatch(createMessage(message))
 })
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(MessageInput));

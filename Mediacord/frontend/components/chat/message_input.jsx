@@ -19,6 +19,7 @@ class MessageInput extends React.Component {
       text: ""
     }
     this.handleChange = this.handleChange.bind(this);
+    this.handleUpload = this.handleUpload.bind(this);
   }
 
   handleChange(type){
@@ -58,11 +59,12 @@ class MessageInput extends React.Component {
             console.log("Invalid command", command);
         }
       },
-      create: function(text, channelId, userId) {
+      create: function(text, channelId, userId, image) {
         this.perform('create', {
           text: text,
           channel_id: channelId,
-          user_id: userId
+          user_id: userId,
+          image: image
         });
       },
       disconnected: () => {
@@ -73,23 +75,38 @@ class MessageInput extends React.Component {
 
   handleSendEvent(e){
     e.preventDefault();
-    this.chats.create(this.state.text, this.props.channelId, this.props.current_user.id);
+    e.stopPropagation();
+    if(this.state.text.includes("http://")){
+      this.chats.create(this.state.text, this.props.channelId, this.props.current_user.id, true)
+    }else{
+      this.chats.create(this.state.text, this.props.channelId, this.props.current_user.id, false);
+    }
     // reset
     this.setState({
       text: ''
     });
   }
 
-  // handleUpload(){
-  //   e.preventDefault();
-  //   cloudinary.openUploadWidget(window.cloudinary_options, (error, response) => {
-  //     if (error === null){
-  //       // upload success -> make message with img as text
-  //     }else {
-  //
-  //     }
-  //   })
-  // }
+  handleUpload(e){
+    e.preventDefault();
+    e.stopPropagation();
+    cloudinary.openUploadWidget(window.cloudinary_options, (error, response) => {
+      if (error === null){
+        console.log(response);
+        this.chats.create(response[0].secure_url, this.props.channelId, this.props.current_user.id, true);
+        // this.props.createMessage(
+        //   {
+        //     text: `${response[0].secure_url}`,
+        //     user_id: this.props.current_user.id,
+        //     channel_id: this.props.channelId,
+        //     image: true
+        //   })
+        // upload success -> make message with img as text
+      }else {
+        // do nothing
+      }
+    })
+  }
 
 
 //secure_url
@@ -100,7 +117,7 @@ class MessageInput extends React.Component {
       <div className="channel-text-area">
         <div className="inner">
           <div className="flex">
-            <div className="upload-button">
+            <div className="upload-button" onClick={this.handleUpload}>
               <div className="content">
                 <svg
                   width="24"

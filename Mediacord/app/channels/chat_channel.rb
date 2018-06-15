@@ -9,7 +9,8 @@ class ChatChannel < ApplicationCable::Channel
     Message.create(
       text: opts.fetch('text'),
       user_id: opts.fetch('user_id'),
-      channel_id: opts.fetch('channel_id')
+      channel_id: opts.fetch('channel_id'),
+      image: opts.fetch('image')
     )
   end
 end

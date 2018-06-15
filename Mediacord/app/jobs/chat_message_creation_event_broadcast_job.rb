@@ -9,7 +9,8 @@ class ChatMessageCreationEventBroadcastJob < ApplicationJob
           id: message.id,
           user_id: message.user_id,
           channel_id: message.channel_id,
-          text: message.text
+          text: message.text,
+          image: message.image
         }
       )
   end
