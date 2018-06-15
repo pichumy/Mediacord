@@ -8,6 +8,7 @@ class UserSearch extends React.Component {
     super(props);
     this.state = {
       name: "",
+      errors: ""
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleClick = this.handleClick.bind(this);
@@ -33,6 +34,14 @@ class UserSearch extends React.Component {
       });
       this.props.fetchUserByName(value.toLowerCase());
     }
+  }
+
+  renderErrors(){
+    return(
+      <ul>
+        <li className="error">{this.state.errors}</li>
+      </ul>
+    );
   }
 
   handleSubmit(e){
@@ -73,6 +82,7 @@ class UserSearch extends React.Component {
         <div className="session-form" onClick={e => e.stopPropagation()}>
           <div className="centeringWrapper">
             <h1> {this.props.text} </h1>
+            {this.renderErrors()}
             <label className="title add-margin"> User Name
               <input
                 className="input-default add-margin"
