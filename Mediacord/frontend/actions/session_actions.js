@@ -31,7 +31,7 @@ const receiveNewUser = (user) => (
 
 export const updateUser = (userData) => dispatch => {
   return APIUtils.patchUser(userData)
-    .then(user => dispatch(receiveNewUser()))
+    .then(user => dispatch(receiveNewUser(user)))
 }
 
 export const createNewSession = userForm => dispatch => {

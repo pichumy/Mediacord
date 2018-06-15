@@ -10,7 +10,12 @@ export const patchUser = (user) => {
   return $.ajax( {
     method: 'PATCH',
     url: `/api/users/${user.id}`,
-    data: { user }
+    data: { user: {
+      avatar_url: user.avatar_url,
+      username: user.username,
+      offline: user.offline
+      }
+    }
   })
 }
 

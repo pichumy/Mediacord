@@ -1,4 +1,4 @@
-import { RECEIVE_NEW_SESSION, LOGOUT_USER } from '../actions/session_actions';
+import { RECEIVE_NEW_SESSION, LOGOUT_USER, RECEIVE_NEW_USER } from '../actions/session_actions';
 
 const initialState = {
   id: null
@@ -8,7 +8,7 @@ const sessionsReducer = (state = initialState, action) => {
   Object.freeze(state);
   switch (action.type){
       case RECEIVE_NEW_SESSION:
-        return Object.assign({}, {id: action.user.id, avatar_url: action.user.avatar_url, username: action.user.username});
+        return Object.assign({}, {id: action.user.id});
       case LOGOUT_USER:
         return initialState;
       default:

@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Loading from '../loading';
 import { logoutSession} from '../../actions/session_actions';
+import { updateUser } from '../../actions/session_actions';
 
 class UserSettingsBar extends React.Component {
 
@@ -11,6 +12,7 @@ class UserSettingsBar extends React.Component {
       state: true // true => hidden
     }
     this.toggleClick = this.toggleClick.bind(this);
+    this.handleEdit = this.handleEdit.bind(this);
   }
 
   toggleClick(e){
@@ -20,14 +22,32 @@ class UserSettingsBar extends React.Component {
     }))
   }
 
+  handleEdit(e){
+    e.preventDefault();
+    e.stopPropagation();
+    cloudinary.openUploadWidget(window.cloudinary_options, (error, response) => {
+      if (error === null){
+        let old_user = this.props.user;
+        let new_user = Object.assign({},
+          {
+            id: old_user.id,
+            avatar_url: response[0].secure_url,
+            username: old_user.username,
+            offline: false
+          })
+        this.props.updateUser(new_user);
+      }
+    })
+  }
+
   render(){
     const { user } = this.props;
+    console.log(user);
     if (!user){
       return (
         <Loading />
       )
     }
-    // TODO: Small refactor to no longer store so much information in session
     let classN = "settings-dropup";
     if(this.state.state){
       classN = "settings-dropup hidden";
@@ -46,6 +66,9 @@ class UserSettingsBar extends React.Component {
         <div className={classN}>
           <div className="menu">
             <div className="menu-item">
+              <button onClick={this.handleEdit}>Edit Avatar</button>
+            </div>
+            <div className="menu-item">
               <button onClick={this.props.signOut}>Sign Out</button>
             </div>
             <div className="settings-triangle"></div>
@@ -62,11 +85,12 @@ class UserSettingsBar extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-  user: state.session
+  user: state.entities.users[state.session.id]
 })
 
 const mapDispatchToProps = dispatch => ({
-  signOut: () => dispatch(logoutSession())
+  signOut: () => dispatch(logoutSession()),
+  updateUser: (user) => dispatch(updateUser(user))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserSettingsBar);

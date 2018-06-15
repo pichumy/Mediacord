@@ -99,7 +99,8 @@
   position: absolute;
   height: 20px;
   width: 20px;
-  left: 45px;
+  left: 69px;
+  bottom: -11px;
   transform: rotate(45deg);
   z-index: 2;
   background: #282b30;

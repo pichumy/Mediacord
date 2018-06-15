@@ -20,10 +20,9 @@ class Api::UsersController < ApplicationController
   end
 
   def update
-    @user = current_user
-    if @user.id != user_params.id
-      render json: ["Insufficient permissions!"], status: 422
-    end
+    @user = User.find(params[:id])
+    # if @user.id != params[:id]
+    #   render json: ["Insufficient permissions!"], status: 422
     if @user.update_attributes(user_params)
       render :show
     else
@@ -34,7 +33,7 @@ class Api::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:id, :username, :password, :avatar_url, :offline)
+    params.require(:user).permit(:username, :password, :avatar_url, :offline)
   end
 
 end
