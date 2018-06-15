@@ -24,7 +24,6 @@ Users can type messages into a chat channel, and have their message displayed al
 
 This is accomplished by connecting users to a web socket upon entering a channel, and having that web socket run broadcast commands whenever a new message is sent to that channel. Web sockets are set up through ActionCable. In order to avoid fetching data from the server every single time, the broadcast command only triggers a change in the redux state, leading to fast and smooth updates.
 
-Not all functionality in the application runs as smoothly yet and requires refactoring, but the most important part is functioning properly.
 
 ```
   message_input.jsx
@@ -107,8 +106,6 @@ Not all functionality in the application runs as smoothly yet and requires refac
 ```
   message_input.jsx
     received: ({ command, message }) => {
-      // 0 = new message
-      // 1 = update user
       switch(command){
         case "new_message":
           this.props.receiveMessage(message)
@@ -139,7 +136,7 @@ Images are handled through the cloudinary widget. Typing a link with http:// in 
 
 ## Project Design
 
-Mediacord was designed as a copy of discord with the goal of learning how to code live interactivity between users. Many mistakes were made in the initial stages of this project, but these mistakes helped me understand a lot of the in-depth reasoning behind why things are done in certain ways, as well as better ways to approach problems in the future.
+Mediacord was designed as a copy of discord with the goal of learning how to code live interactivity between users. Many mistakes were made in the initial stages of this project, but these mistakes helped me understand a lot of the in-depth reasoning behind why things are done in certain ways, as well as better ways to approach problems in the future. The project may be refactored at a later date.
 
 ## Technologies
 
@@ -157,4 +154,4 @@ Redux was chosen to allow for quicker reloading on the front end, allowing users
 
 ## Future Features
 
-Add more action cable jobs for more connectivity goodness! A good example would be for notifications. Also need to refactor private-server joins in order to avoid refreshes.
+Add more action cable jobs for more connectivity goodness! A good example would be for notifications. It also took a while before I truly understood the power of redux. Refactoring of some of the redux cycles created earlier on will help make the application run even faster. 
