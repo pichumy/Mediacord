@@ -18,7 +18,7 @@
       };
       window.cloudinary_options = {
         cloud_name: '<%= ENV['CLOUD_NAME'] %>',
-        upload_preset: '<%= Figaro.env.UPLOAD_PRESET %>'
+        upload_preset: '<%= ENV['UPLOAD_PRESET'] %>'
       }
     </script>
     <% end %>
