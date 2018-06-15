@@ -30,7 +30,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack -d -w",
-    "postinstall": "webpack"
+    "postinstall": "webpack --optimize-minimize"
   },
   "keywords": [],
   "author": "",
