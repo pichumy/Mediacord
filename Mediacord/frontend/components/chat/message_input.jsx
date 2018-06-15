@@ -38,19 +38,18 @@ class MessageInput extends React.Component {
     // let cable = Cable.createConsumer('wss://mediacord.herokuapp.com/cable');
     let cable = ActionCable.createConsumer();
     this.cable = cable;
-    console.log(this.props.channelId);
     this.chats = cable.subscriptions.create({
       channel: 'ChatChannel',
       id: `${this.props.channelId}`
     }, {
       connected: () => {
       },
-      received: ({ command }) => {
+      received: ({ command, message }) => {
         // 0 = new message
         // 1 = update user
         switch(command){
           case "new_message":
-            this.props.fetchMessages(this.props.channelId);
+            this.props.receiveMessage(message)
             break;
           case "update_users":
             this.props.fetchUserList(this.props.serverId);
@@ -81,6 +80,19 @@ class MessageInput extends React.Component {
     });
   }
 
+  // handleUpload(){
+  //   e.preventDefault();
+  //   cloudinary.openUploadWidget(window.cloudinary_options, (error, response) => {
+  //     if (error === null){
+  //       // upload success -> make message with img as text
+  //     }else {
+  //
+  //     }
+  //   })
+  // }
+
+
+//secure_url
   render(){
     // TODO: Add file uploading and turn upload-button into a button
     return (

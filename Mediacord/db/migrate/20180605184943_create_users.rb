@@ -4,7 +4,7 @@ class CreateUsers < ActiveRecord::Migration[5.1]
       t.string :username, null: false
       t.string :password_digest, null: false
       t.string :session_token, null: false
-      t.string :avatar_url, default: 'discord-logo.png'
+      t.string :avatar_url, default: 'https://res.cloudinary.com/djvxjp2tv/image/upload/v1529079794/discord-logo.png'
       t.boolean :offline, null: false, default: false
 
       t.timestamps

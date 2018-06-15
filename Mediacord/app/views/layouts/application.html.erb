@@ -8,12 +8,17 @@
     <%= javascript_include_tag 'application' %>
     <link href="https://fonts.googleapis.com/css?family=Libre+Franklin" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <script src="//widget.cloudinary.com/global/all.js" type="text/javascript"></script>
     <% if current_user %>
     <script type="text/javascript">
       window.currentUser = {
         "id": <%= current_user.id %>,
         "username": "<%= current_user.username %>",
-        "avatar_url": "<%= asset_path current_user.avatar_url %>"
+        "avatar_url": "<%= current_user.avatar_url %>"
+      };
+      window.cloudinary_options = {
+        cloud_name: '<%= ENV['CLOUD_NAME'] %>',
+        upload_preset: '<%= ENV["UPLOAD_PRESET"] %>'
       }
     </script>
     <% end %>

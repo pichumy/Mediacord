@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 20180613173424) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "username", null: false
+    t.string "username", null: fals
     t.string "password_digest", null: false
     t.string "session_token", null: false
     t.string "avatar_url", default: "discord-logo.png"
