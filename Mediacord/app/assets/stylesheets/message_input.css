@@ -1,0 +1,101 @@
+.message-input {
+  margin-top: 10px;
+  height: 20px;
+  padding: 10px 10px;
+  background-color: rgba(0,0,0,.1);
+  border-color: rgba(0,0,0,.3);
+  color: #f6f6f7;
+  border-radius: 3px;
+  border-style: solid;
+  border-width: 1px;
+  box-sizing: border-box;
+  outline: none;
+  width: 100%;
+}
+
+.form {
+  background-color: #36393f;
+  box-shadow: 0 -1px 0 hsla(0,0%,100%,.06);
+}
+
+.channel-text-area {
+  margin: 20px 0 30px;
+  position: relative;
+  transition: opacity .2s ease;
+  width: 100%;
+}
+
+.channel-text-area .inner {
+  background-color: hsla(218,5%,47%,.3);
+  border-radius: 5px;
+  position: relative;
+  display: flex;
+  margin-bottom: 70px;
+  margin-left: 15px;
+  margin-right: 20px;
+}
+
+.channel-text-area .inner .flex {
+  -webkit-box-pack: start;
+  justify-content: flex-start;
+  -webkit-box-align: stretch;
+  align-items: stretch;
+  display: flex;
+}
+
+.upload-button {
+  cursor: pointer;
+  padding: 10px;
+  width: auto;
+  background: transparent;
+  border: 0;
+  color: currentColor;
+  margin: 0;
+  -webkit-box-align: center;
+  -webkit-box-pack: center;
+  align-items: center;
+  border-radius: 3px;
+  box-sizing: border-box;
+  display: flex;
+  font-size: 14px;
+  font-weight: 500;
+  justify-content: center;
+  line-height: 16px;
+  position: relative;
+  user-select: none;
+  font-family: Whitney,Helvetica Neue,Helvetica,Arial,sans-serif;
+}
+
+.upload-button content {
+  display: block;
+  cursor: pointer;
+}
+
+.vertical-divider {
+  background-color: hsla(0,0%,100%,.1);
+  box-sizing: border-box;
+  height: 80%;
+  position: relative;
+  top: 10%;
+  width: 1px;
+
+}
+
+.textarea-content {
+  height: auto;
+  color: hsla(0,0%,100%,.7);
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  border: none;
+  font-size: 0.9375rem;
+  font-weight: 400;
+  letter-spacing: -0.025rem;
+  line-height: 1.25rem;
+  margin: 2px 2px 2px 0;
+  max-height: 144px;
+  min-height: 20px;
+  padding: 10px 38px 10px 10px;
+  resize: none;
+  width: 100%;
+}

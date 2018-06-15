@@ -8,67 +8,9 @@
 }
 
 .message-log {
-  height: 88%;
+  height: 100%;
+  width: 100%;
   overflow: scroll;
   display: flex;
   flex-direction: column-reverse;
-}
-
-.message-container {
-  height: 80px;
-  padding: 0 10px;
-  background: hsla(218,5%,47%,.3);
-  display: flex;
-  justify-content: space-between;
-}
-
-.message-input {
-  margin-top: 10px;
-  height: 20px;
-  padding: 10px 3px;
-  background-color: rgba(0,0,0,.1);
-  border-color: rgba(0,0,0,.3);
-  color: #f6f6f7;
-  border-radius: 3px;
-  border-style: solid;
-  border-width: 1px;
-  box-sizing: border-box;
-  outline: none;
-  width: 100%;
-}
-
-.message-item-container {
-  border-bottom: 1px solid hsla(0,0%,100%,.04);
-  margin-left: 3px;
-  margin-right: 2px;
-  height: 80px;
-  padding: 0 10px;
-  background: hsla(218,5%,47%,.3);
-  user-select: text;
-  word-wrap: break-word;
-  box-sizing: border-box;
-  flex-shrink: 0;
-}
-
-.message-author {
-  box-sizing: content-box;
-  font-size: 1rem;
-  color: white;
-  font-weight: 500;
-  margin: 3px;
-}
-
-.message-text {
-  box-sizing: content-box;
-  line-height: 1.1em;
-  color: #99aab5;
-  font-weight: 500;
-  height: auto;
-  word-break: break-all;
-}
-
-.message-header {
-  display: flex;
-  flex-wrap: nowrap;
-  align-items: center;
 }

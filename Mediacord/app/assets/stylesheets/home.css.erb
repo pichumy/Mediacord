@@ -13,6 +13,7 @@
   justify-content: flex-start;
   -webkit-box-align: stretch;
   align-items: stretch;
+  font-family: Whitney,Helvetica Neue,Helvetica,Arial,sans-serif;
 }
 
 .search-bar{
@@ -69,4 +70,73 @@ position: relative;
   opacity: .6;
   transition: opacity .05s;
   width: 24px;
+}
+
+.flex-special {
+  flex: 1 1 auto;
+  margin-left: 0px;
+  margin-right: 0;
+  border-radius: 0;
+  overflow: hidden;
+}
+
+.flex-again {
+  flex: 1 1 auto;
+  background-color: #202225;
+  min-height: 1px;
+}
+
+.layer {
+  background: #36393f;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: vertical;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  contain: layout;
+  overflow: hidden;
+}
+
+.layer-spacer {
+  min-height: 1px;
+  background: #36393f;
+  -webkit-box-flex: 1;
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: vertical;
+  contain: layout;
+  position: relative;
+}
+
+.app-x{
+  bottom: 0;
+  contain: layout;
+  left: 0;
+  position: absolute;
+  right: 0;
+  text-rendering: optimizeLegibility;
+  top: 0;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: vertical;
+  display: flex;
+  flex-direction: column;
+}
+
+.app {
+  -webkit-box-direction: normal;
+  -webkit-box-orient: vertical;
+  background-color: #202225;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+  position: absolute;
+  width: 100vw;
 }

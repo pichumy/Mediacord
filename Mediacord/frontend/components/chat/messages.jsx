@@ -9,17 +9,26 @@ const Message = ({ message, userList }) => {
     )
   }
   return (
-    <div className="message-item-container">
-      <div className="message-header">
-        <div className="avatar-image">
-          <img src={user.avatar_url}></img>
+    <div>
+      <div className="message-group">
+        <img src={user.avatar_url}
+          className="message-avatar">
+        </img>
+        <div className="body">
+          <h2 className="no-padding-margin">
+            <div className="message-username">
+              {user.username}
+              <span className="timestamp">
+                {message.time_stamp}
+              </span>
+            </div>
+          </h2>
+          <div className="message-text">
+            <div className="markup">
+              {message.text}
+            </div>
+          </div>
         </div>
-        <div className="message-author">
-          {user.username}
-        </div>
-      </div>
-      <div className="message-text">
-        {message.text}
       </div>
     </div>
   )

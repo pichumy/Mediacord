@@ -7,6 +7,12 @@ class MessageInput extends React.Component {
     this.createSocket();
   }
 
+  componentDidUpdate(prevProps, prevState){
+    if(prevProps.channelId !== this.props.channelId){
+      this.createSocket();
+    }
+  }
+
   constructor(props){
     super(props);
     this.state = {
@@ -32,6 +38,7 @@ class MessageInput extends React.Component {
     // let cable = Cable.createConsumer('wss://mediacord.herokuapp.com/cable');
     let cable = ActionCable.createConsumer();
     this.cable = cable;
+    console.log(this.props.channelId);
     this.chats = cable.subscriptions.create({
       channel: 'ChatChannel',
       id: `${this.props.channelId}`
@@ -60,7 +67,7 @@ class MessageInput extends React.Component {
         });
       },
       disconnected: () => {
-        
+
       }
     });
   }
@@ -75,11 +82,27 @@ class MessageInput extends React.Component {
   }
 
   render(){
+    // TODO: Add file uploading and turn upload-button into a button
     return (
-    <form>
-      <div className="message-container">
-        <input className="message-input"
-          type="text"
+    <form className="form">
+      <div className="channel-text-area">
+        <div className="inner">
+          <div className="flex">
+            <div className="upload-button">
+              <div className="content">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24">
+                  <path
+                    fill="currentColor"
+                     d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z">
+                   </path>
+                 </svg>
+              </div>
+            </div>
+          <div className="vertical-divider"></div>
+        <input className="textarea-content"
           placeholder="Type your message here..."
           value={this.state.text}
           onChange={this.handleChange('text')}>
@@ -88,6 +111,8 @@ class MessageInput extends React.Component {
           onClick={ (e) => this.handleSendEvent(e) }>
         </button>
 
+          </div>
+        </div>
       </div>
     </form>
     )

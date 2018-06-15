@@ -43,7 +43,7 @@ class ChannelNav extends React.Component{
       return <Channel channel={channel} key={channel.id}/>
     });
     return (
-      <div className="channel-nav">
+      <div className="channel-nav direction-column">
         <ChannelSettingsBar />
         <div className="channels">
           {channels}

@@ -5,17 +5,16 @@
   flex-shrink: 0;
 }
 
-.user-settings-bar {
-  height: 52px;
-  margin-bottom: 1px;
-  padding: 0 10px;
-  font-size: 14px;
-  color: #fff;
-  -webkit-box-align: center;
-  align-items: center;
-  background: rgba(32,34,37,.3);
+.direction-column {
+  -webkit-box-direction: normal;
+  -webkit-box-orient: vertical;
+  flex-direction: column;
   display: flex;
   flex-wrap: nowrap;
+  -webkit-box-pack: start;
+  justify-content: flex-start;
+  -webkit-box-align: stretch;
+  align-items: stretch;
 }
 
 .channel-settings-bar {
@@ -85,20 +84,20 @@
   font-size: 16px;
   line-height: 32px;
   -webkit-box-align: center;
-    -webkit-box-direction: normal;
-    -webkit-box-orient: horizontal;
-    -webkit-box-sizing: border-box;
-    align-items: center;
-    border-radius: 3px;
-    box-sizing: border-box;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    flex-direction: row;
-    height: 32px;
-    margin: 1px 0 1px 8px;
-    overflow: hidden;
-    padding: 0 8px;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: horizontal;
+  -webkit-box-sizing: border-box;
+  align-items: center;
+  border-radius: 3px;
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: row;
+  height: 32px;
+  margin: 1px 0 1px 8px;
+  overflow: hidden;
+  padding: 0 8px;
 }
 
 .avatar-image {
@@ -111,4 +110,8 @@
   font-size: 14px;
   font-weight: 500;
   padding: 5px;
+}
+
+.ellipsis {
+  overflow: ellipsis;
 }

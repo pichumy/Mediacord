@@ -11,7 +11,12 @@ const PrivateChannels = ({ channel, match }) => {
     container = "userlist-item selected";
   }
   let namesArray = channel.users.map(user => user.username);
+  if (namesArray.length > 2){
+    namesArray = namesArray.slice(0,2);
+    namesArray.push('...');
+  }
   let names = namesArray.join(', ');
+
   return(
       <div className="channel-wrapper">
         <Link to={LinkURL}>
@@ -19,7 +24,9 @@ const PrivateChannels = ({ channel, match }) => {
             <div className="avatar-image">
               <img src={channel.avatar_url}></img>
             </div>
-            <div className={classN}>{names}</div>
+            <div className="ellipsis">
+              <div className={classN}>{names}</div>
+            </div>
           </div>
         </Link>
       </div>
