@@ -8,7 +8,8 @@ class ChannelForm extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      channel: ""
+      channel: "",
+      errors: ""
     }
     this.submitForm = this.submitForm.bind(this);
   }
@@ -27,6 +28,7 @@ class ChannelForm extends React.Component {
             {error}
           </li>
         ))}
+        <li className="error">{this.state.errors}</li>
       </ul>
     );
   }
@@ -34,15 +36,21 @@ class ChannelForm extends React.Component {
   submitForm(e){
     e.stopPropagation();
     e.preventDefault();
-    const match = matchPath(this.props.location.pathname, {
-      path: '/servers/:id',
-    })
+    if(this.state.channel.length === 0){
+      this.setState({
+        errors: "Channel name can't be blank!"
+      })
+    }else {
+      const match = matchPath(this.props.location.pathname, {
+        path: '/servers/:id',
+      })
 
-    let channel = {
-      name: this.state.channel,
-      server_id: parseInt(match.params.id)
-    };
-    this.props.createChannel(channel);
+      let channel = {
+        name: this.state.channel,
+        server_id: parseInt(match.params.id)
+      };
+      this.props.createChannel(channel);
+    }
   }
 
   render(){
