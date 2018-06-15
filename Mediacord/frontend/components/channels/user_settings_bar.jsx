@@ -32,8 +32,6 @@ class UserSettingsBar extends React.Component {
           {
             id: old_user.id,
             avatar_url: response[0].secure_url,
-            username: old_user.username,
-            offline: false
           })
         this.props.updateUser(new_user);
       }
