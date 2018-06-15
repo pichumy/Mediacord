@@ -6,12 +6,13 @@ const messagesReducer = (state = initialState, action) => {
   switch(action.type){
     case RECEIVE_MESSAGES:
     // only messages for one channel should be loaded at any one time
-      return action.messages;
+      let object = {}
+      action.messages.array.map(message => {
+        object[message.id] = message
+      })
+      return object;
     case RECEIVE_MESSAGE:
-      let newArray = [];
-      state.array.forEach(message => newArray.push(message));
-      newArray.push(action.message);
-      return {array: newArray};
+      return Object.assign({}, state, {[action.message.id]: action.message});
     default:
       return state;
   }

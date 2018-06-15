@@ -28,5 +28,13 @@ export const offlineUsers = (state) => {
       offline.push(user)
     }
   });
-  return offline; 
+  return offline;
+}
+
+export const messageSelector = (state) => {
+  let array = [];
+  Object.values(state.entities.messages).map(message => {
+    array.push(message);
+  })
+  return { array }
 }
