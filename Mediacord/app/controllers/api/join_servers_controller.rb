@@ -11,7 +11,7 @@ class Api::JoinServersController < ApplicationController
       # JoinServerEventBroadcastJob.perform_later(server)
       render '/api/users/show'
     else
-      render @member.errors.full_messages, status: 422
+      render json: ["You are already on that server!"], status: 422
     end
   end
 end

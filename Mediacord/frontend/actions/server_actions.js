@@ -66,7 +66,7 @@ export const fetchUserList = (serverId) => dispatch => {
 
 export const joinServer = (serverId, userId) => dispatch => {
   return APIUtils.joinServer(serverId, userId)
-    .then(() => dispatch(fetchServers()), (error) => dispatch(receiveErrors('server', error)))
+    .then(() => dispatch(fetchServers()), (error) => dispatch(receiveErrors('server', error.responseJSON)))
     .then(() => dispatch(closeModal()))
 }
 

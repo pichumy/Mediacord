@@ -22,6 +22,9 @@ class ChannelSettingsBar extends React.Component {
     e.preventDefault();
     e.stopPropagation();
     this.props.openModal();
+    this.setState(prevState => ({
+      status: !prevState.status
+    }))
   }
 
   render(){

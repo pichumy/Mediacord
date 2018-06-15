@@ -83,3 +83,26 @@
   position: relative;
   width: 32px;
 }
+
+.settings-dropup {
+  position: relative;
+  bottom: 50px;
+  left: 35px;
+  z-index: 1;
+  background-color: #282b30;
+  border: 1px solid gray;
+  padding: 10px;
+  box-shadow: -1px 4px 6px 1px rgba(0, 0, 0, 0.09);
+}
+
+.settings-triangle {
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  left: 45px;
+  transform: rotate(45deg);
+  z-index: 2;
+  background: #282b30;
+  border-bottom: 1px solid gray;
+  border-right: 1px solid gray;
+}

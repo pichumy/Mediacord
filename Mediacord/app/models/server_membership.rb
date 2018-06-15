@@ -1,5 +1,6 @@
 class ServerMembership < ApplicationRecord
-  validates :server_id, :user_id, presence: true 
+  validates :server_id, :user_id, presence: true
+  validates :user_id, uniqueness: { scope: [:server_id], message: "You are already on that server!" } 
 
   belongs_to :server,
   primary_key: :id,
