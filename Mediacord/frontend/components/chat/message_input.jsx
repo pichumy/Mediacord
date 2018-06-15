@@ -92,7 +92,6 @@ class MessageInput extends React.Component {
     e.stopPropagation();
     cloudinary.openUploadWidget(window.cloudinary_options, (error, response) => {
       if (error === null){
-        console.log(response);
         this.chats.create(response[0].secure_url, this.props.channelId, this.props.current_user.id, true);
         // this.props.createMessage(
         //   {
