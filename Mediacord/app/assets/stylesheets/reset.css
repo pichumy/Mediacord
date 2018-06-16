@@ -16,6 +16,10 @@ span, article, footer, time, small {
   background: transparent;
 }
 
+::-webkit-scrollbar{
+  display: none; 
+}
+
 ul {
   list-style: none;
 }
