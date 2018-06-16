@@ -76,15 +76,17 @@ class MessageInput extends React.Component {
   handleSendEvent(e){
     e.preventDefault();
     e.stopPropagation();
-    if(this.state.text.includes("http://")){
-      this.chats.create(this.state.text, this.props.channelId, this.props.current_user.id, true)
-    }else{
-      this.chats.create(this.state.text, this.props.channelId, this.props.current_user.id, false);
+    if(this.state.text.length > 0){  
+      if(this.state.text.includes("http://")){
+        this.chats.create(this.state.text, this.props.channelId, this.props.current_user.id, true)
+      }else{
+        this.chats.create(this.state.text, this.props.channelId, this.props.current_user.id, false);
+      }
+      // reset
+      this.setState({
+        text: ''
+      });
     }
-    // reset
-    this.setState({
-      text: ''
-    });
   }
 
   handleUpload(e){
