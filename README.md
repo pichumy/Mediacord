@@ -24,7 +24,7 @@ Users can type messages into a chat channel, and have their message displayed al
 
 This is accomplished by connecting users to a web socket upon entering a channel, and having that web socket run broadcast commands whenever a new message is sent to that channel. Web sockets are set up through ActionCable. In order to avoid fetching data from the server every single time, the broadcast command only triggers a change in the redux state, leading to fast and smooth updates.
 
-
+This portion of the code is located in the React Component. It attempts to subscribe to a channel streaming from the websocket / cable on the backend.
 ```
   message_input.jsx
   createSocket() {
@@ -38,12 +38,14 @@ This is accomplished by connecting users to a web socket upon entering a channel
     }, {
   ...
 ```
+This is on the Rails backend. It starts listening / streaming on certain channels from the backend.
 ```
     chat_channel.rb
     def subscribed
       stream_from "chat_#{params[:id]}"
     end
 ```
+This is a function defined on the frontend. It defines a function called create which can be called inside the React component which will perform the "create" function defined on the channel in the backend.
 ```
   message_input.jsx
   create: function(text, channelId, userId, image) {
@@ -56,6 +58,7 @@ This is accomplished by connecting users to a web socket upon entering a channel
   },
   ...
 ```
+Here is where the "create" command is defined on the backend.
 ```
   chat_channel.rb
   def create(opts)
@@ -67,17 +70,8 @@ This is accomplished by connecting users to a web socket upon entering a channel
     )
   end
 ```
-```
-  messages_controller.rb
-  def create
-    @message = Message.new(message_params)
-    if @message.save
-      render :show
-    else
-      render json: @message.errors.full_messages, status: 422
-    end
-  end
-```
+Message.create triggers an action in the model. It passes the newly created message to the EventBroadcastJob
+
 ```
   message.rb
 
@@ -85,6 +79,7 @@ This is accomplished by connecting users to a web socket upon entering a channel
     ChatMessageCreationEventBroadcastJob.perform_later(self)
   end
 ```
+The EventBroadcastJob is what is used to send data back to the front end and notify all subscribers to a certain channel to update.
 ```
   ChatMessageCreationEventBroadcastJob.rb
   def perform(message)
@@ -102,7 +97,7 @@ This is accomplished by connecting users to a web socket upon entering a channel
       )
   end
 ```
-
+The frontend receives the data from the EventBroadcastJob here. It then triggers activity on the front end based on the type of command defined by the backend. (In this case, it will update the redux store which will trigger a re-render)
 ```
   message_input.jsx
     received: ({ command, message }) => {
@@ -111,6 +106,7 @@ This is accomplished by connecting users to a web socket upon entering a channel
           this.props.receiveMessage(message)
  ...
 ```
+This is the action that will be dispatched.
 ```
   message_actions.js
 
@@ -120,6 +116,7 @@ This is accomplished by connecting users to a web socket upon entering a channel
     )
   }
 ```
+This is the reducer that receives that action, updating the store, and triggering the re-render.
 ```
   messages_reducer.js
 
@@ -154,4 +151,4 @@ Redux was chosen to allow for quicker reloading on the front end, allowing users
 
 ## Future Features
 
-Add more action cable jobs for more connectivity goodness! A good example would be for notifications. It also took a while before I truly understood the power of redux. Refactoring of some of the redux cycles created earlier on will help make the application run even faster. 
+Add more action cable jobs for more connectivity goodness! A good example would be for notifications. It also took a while before I truly understood the power of redux. Refactoring of some of the redux cycles created earlier on will help make the application run even faster.
