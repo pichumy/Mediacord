@@ -15,9 +15,8 @@ export const receiveErrors = (type, errors) => {
       break;
     case 'server':
       return_type = RECEIVE_SERVER_ERROR;
-      break; 
+      break;
     default:
-      console.log(`Error, unknown type: ${return_type}`);
       return {type: RESET_ERRORS};
   }
     return (

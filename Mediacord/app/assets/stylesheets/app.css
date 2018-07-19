@@ -1,11 +1,9 @@
 #root {
-  -webkit-box-direction: normal;
-  -webkit-box-orient: vertical;
-  background-color: #202225;
-  display: flex;
-  flex-direction: column;
+  /* background-color: #202225; */
+  /* display: flex; */
+  /* flex-direction: column; */
   height: 100vh;
-  overflow: hidden;
-  position: absolute;
-  width: 100vw;
+  /* overflow: hidden; */
+  /* position: absolute; */
+  /* width: 100vw; */
 }

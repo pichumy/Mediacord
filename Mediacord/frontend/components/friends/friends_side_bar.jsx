@@ -29,7 +29,7 @@ class FriendsSideBar extends React.Component{
     })
 
     return(
-      <div className="channel-nav">
+      <div className="channel-nav direction-column">
         <div className="search-bar">
           <input
             type="text"
