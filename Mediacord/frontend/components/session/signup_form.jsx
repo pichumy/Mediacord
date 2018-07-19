@@ -73,7 +73,7 @@ class SignUpForm extends React.Component {
       });
     }
     else
-      this.props.submitForm(this.state);
+      this.props.submitForm({username: this.state.username, password: this.state.password});
   }
 
   demoUser(e){
