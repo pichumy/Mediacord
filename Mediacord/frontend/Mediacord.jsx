@@ -23,8 +23,8 @@ document.addEventListener("DOMContentLoaded", () => {
   } else {
     store = configureStore();
   }
-  window.store = store;
-  window.dispatch = store.dispatch;
-  window.fetchServers = fetchServers;
+  // window.store = store;
+  // window.dispatch = store.dispatch;
+  // window.fetchServers = fetchServers;
   ReactDOM.render(<Root store={store}/>, root);
 })

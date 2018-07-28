@@ -11,26 +11,36 @@ function Modal({modal, closeModal}){
     return null;
   }
   let component;
-  switch (modal){
-    case 'Create Channel':
-      component = <CreateChannelContainer />;
-      break;
-    case 'Server':
-      component = <ServerFormContainer />;
-      break;
-    case 'Users':
-      component = <UserSearch />
-      break;
-    case 'Invite':
-      component = <UserSearchJoin />
-      break; 
-    default:
-      return null;
-  }
+  // switch (modal){
+  //   case 'Create Channel':
+  //     component = <CreateChannelContainer />;
+  //     break;
+  //   case 'Server':
+  //     component = <ServerFormContainer />;
+  //     break;
+  //   case 'Users':
+  //     component = <UserSearch />
+  //     break;
+  //   case 'Invite':
+  //     component = <UserSearchJoin />
+  //     break;
+  //   default:
+  //     return null;
+  // }
+  let objectHash =
+  {
+    'Create Channel': () => ( <CreateChannelContainer /> ),
+    'Server' : () => ( <ServerFormContainer /> ),
+    'Users' : () => ( <UserSearch /> ),
+    'Invite' : () => ( <UserSearchJoin /> ),
+  };
+
+  component = objectHash[modal] || function(){ return null };
+
   return (
     <div className="modal-background" onClick={closeModal}>
       <div className="modal-child">
-        { component }
+        { component() }
       </div>
     </div>
   );
